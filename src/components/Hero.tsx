@@ -12,9 +12,8 @@ type HeroProps = {
   scrollTo?: (ref: React.RefObject<HTMLElement>) => void;
 };
 
-export const Hero = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, leaveLink, scrollTo }, ref) => {
+export const Hero = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, leaveLink }, ref) => {
   const { t } = useTranslation();
-  const contactRef = React.useRef<HTMLElement>(null!) as React.RefObject<HTMLElement>;
 
   return (
     <>
