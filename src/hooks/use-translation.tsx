@@ -149,13 +149,25 @@ const translations = {
     "language.toggle": "Dansk",
 
     "whyus.title": "Why Choose Us",
-    "whyus.subtitle": "We're not another WordPress shop. We're your modern tech team.",
-    "whyus.point.0": "Built with modern technologies – no WordPress templates",
-    "whyus.point.1": "Skilled developers with hands-on experience",
-    "whyus.point.2": "Free live demos available",
-    "whyus.point.3": "Free consultations to help you choose what's best",
-    "whyus.point.4": "Online meetings & flexible communication",
-    "whyus.point.5": "Based in Denmark – EU-hosted servers",
+    "whyus.subtitle": "More than just a web agency — we’re your dedicated digital partner.",
+
+    "whyus.point.0.title": "Modern Tech Only",
+    "whyus.point.0.description": "We use the latest development frameworks and avoid outdated WordPress themes, ensuring your website is fast, secure, and scalable.",
+
+    "whyus.point.1.title": "Expert Developers",
+    "whyus.point.1.description": "Our team is made up of skilled developers with real-world experience in building high-performing websites and digital products.",
+
+    "whyus.point.2.title": "Free Live Demos",
+    "whyus.point.2.description": "See exactly what we can deliver with real-time, live demonstrations before committing to a project — no surprises.",
+
+    "whyus.point.3.title": "Free Consultations",
+    "whyus.point.3.description": "We offer no-obligation strategy sessions to help you find the best digital solution for your business needs.",
+
+    "whyus.point.4.title": "Flexible Collaboration",
+    "whyus.point.4.description": "Work with us on your terms — we offer virtual meetings, flexible schedules, and clear communication throughout the project.",
+
+    "whyus.point.5.title": "Based in Denmark",
+    "whyus.point.5.description": "We're a Danish team working with EU-hosted servers, ensuring GDPR compliance, fast load times, and trusted local support.",
 
     pricing: {
       title: "Pricing Plans",
@@ -320,13 +332,25 @@ const translations = {
 
     "language.toggle": "English",
     "whyus.title": "Hvorfor Vælge Os",
-    "whyus.subtitle": "Vi er ikke endnu et WordPress-bureau – vi er dit moderne tech-team.",
-    "whyus.point.0": "Bygget med moderne teknologier – ingen WordPress-skabeloner",
-    "whyus.point.1": "Dygtige udviklere med praktisk erfaring",
-    "whyus.point.2": "Gratis live demos tilgængelige",
-    "whyus.point.3": "Gratis rådgivning for at finde den bedste løsning",
-    "whyus.point.4": "Online møder & fleksibel kommunikation",
-    "whyus.point.5": "Baseret i Danmark – EU-hostede servere",
+    "whyus.subtitle": "Vi er ikke bare et bureau – vi er din tekniske samarbejdspartner.",
+
+    "whyus.point.0.title": "Moderne Teknologi",
+    "whyus.point.0.description": "Vi bruger de nyeste teknologier og undgår gamle WordPress-skabeloner, så din løsning bliver hurtig, sikker og fremtidssikret.",
+
+    "whyus.point.1.title": "Erfarne Udviklere",
+    "whyus.point.1.description": "Vores team består af erfarne udviklere med praktisk erfaring og dokumenterede resultater fra virkelige projekter.",
+
+    "whyus.point.2.title": "Gratis Live Demos",
+    "whyus.point.2.description": "Se hvad vi kan levere – vi tilbyder live demonstrationer, så du ved præcis, hvad du får, før du siger ja.",
+
+    "whyus.point.3.title": "Gratis Rådgivning",
+    "whyus.point.3.description": "Få en gratis og uforpligtende samtale, hvor vi hjælper dig med at finde den rigtige digitale løsning til din virksomhed.",
+
+    "whyus.point.4.title": "Fleksibelt Samarbejde",
+    "whyus.point.4.description": "Vi tilpasser os dig – online møder, fleksible arbejdstider og klar kommunikation hele vejen igennem.",
+
+    "whyus.point.5.title": "Dansk Team",
+    "whyus.point.5.description": "Vi er baseret i Danmark og bruger EU-hostede servere, så du får lokal support, hurtig ydelse og fuld GDPR-overholdelse.",
   },
   pricing: {
     title: "Prispakker",
