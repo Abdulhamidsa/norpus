@@ -103,12 +103,12 @@ export default function Home() {
       {/* Pricing Section */}
       <Pricing ref={pricingRef} enterLink={enterLink} leaveLink={leaveLink} enterButton={enterButton} />
       {/* CTA Section */}
-      <Cta enterButton={enterButton} leaveLink={leaveLink} ref={contactRef} enterLink={enterLink} />
+      <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
+      <Cta enterButton={enterButton} leaveLink={leaveLink} ref={contactRef} />
       {/* Contact Section */}
       <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} />
 
       {/* Footer */}
-      <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
       <Footer />
     </div>
   );
