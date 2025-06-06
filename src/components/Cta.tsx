@@ -4,19 +4,18 @@ import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
 type ProcessProps = {
-  enterLink: () => void;
   leaveLink?: () => void;
   enterButton: () => void;
   leaveButton?: () => void;
 };
 import { useTranslation } from "@/hooks/use-translation";
 
-export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterButton }) => {
+export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterButton }, ref) => {
   const { t } = useTranslation();
   return (
     <>
       {/* CTA Section */}
-      <section className="py-20">
+      <section ref={ref} className="py-20">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
             <div className="absolute inset-0 z-0">
