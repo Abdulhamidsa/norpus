@@ -21,12 +21,12 @@ export const WhyUs = forwardRef<HTMLDivElement, Props>(({ enterLink, leaveLink }
       </motion.div>
 
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <WhyUsCard icon={<LaptopIcon className="h-8 w-8" />} title={t("whyus.point.0")} description={t("whyus.point.0")} delay={0} />
-        <WhyUsCard icon={<ShieldCheck className="h-8 w-8" />} title={t("whyus.point.1")} description={t("whyus.point.1")} delay={0.1} />
-        <WhyUsCard icon={<Video className="h-8 w-8" />} title={t("whyus.point.2")} description={t("whyus.point.2")} delay={0.2} />
-        <WhyUsCard icon={<Users className="h-8 w-8" />} title={t("whyus.point.3")} description={t("whyus.point.3")} delay={0.3} />
-        <WhyUsCard icon={<Rocket className="h-8 w-8" />} title={t("whyus.point.4")} description={t("whyus.point.4")} delay={0.4} />
-        <WhyUsCard icon={<Globe className="h-8 w-8" />} title={t("whyus.point.5")} description={t("whyus.point.5")} delay={0.5} />
+        <WhyUsCard icon={<LaptopIcon className="h-8 w-8" />} title={t("whyus.point.0.title")} description={t("whyus.point.0.description")} delay={0} />
+        <WhyUsCard icon={<ShieldCheck className="h-8 w-8" />} title={t("whyus.point.1.title")} description={t("whyus.point.1.description")} delay={0.1} />
+        <WhyUsCard icon={<Video className="h-8 w-8" />} title={t("whyus.point.2.title")} description={t("whyus.point.2.description")} delay={0.2} />
+        <WhyUsCard icon={<Users className="h-8 w-8" />} title={t("whyus.point.3.title")} description={t("whyus.point.3.description")} delay={0.3} />
+        <WhyUsCard icon={<Rocket className="h-8 w-8" />} title={t("whyus.point.4.title")} description={t("whyus.point.4.description")} delay={0.4} />
+        <WhyUsCard icon={<Globe className="h-8 w-8" />} title={t("whyus.point.5.title")} description={t("whyus.point.5.description")} delay={0.5} />
       </div>
     </section>
   );

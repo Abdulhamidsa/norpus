@@ -20,8 +20,8 @@ type NavbarProps = {
     servicesRef: React.RefObject<HTMLDivElement>;
     processRef: React.RefObject<HTMLDivElement>;
     pricingRef: React.RefObject<HTMLDivElement>;
-    contactRef: React.RefObject<HTMLDivElement>;
     whyUsRef: React.RefObject<HTMLDivElement>;
+    contactRef: React.RefObject<HTMLDivElement>;
   };
 };
 
@@ -68,11 +68,11 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink active={activeSection === "pricing"} onClick={() => scrollTo(refs.pricingRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
               {t("nav.pricing")}
             </NavLink>
-            <NavLink active={activeSection === "contact"} onClick={() => scrollTo(refs.contactRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
-              {t("nav.contact")}
-            </NavLink>
             <NavLink active={activeSection === "whyus"} onClick={() => scrollTo(refs.whyUsRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
               {t("nav.whyus")}
+            </NavLink>
+            <NavLink active={activeSection === "contact"} onClick={() => scrollTo(refs.contactRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.contact")}
             </NavLink>
 
             <LanguageToggle onMouseEnter={enterButton} onMouseLeave={leaveLink} />
@@ -85,7 +85,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
         {menuOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="fixed top-[72px] left-0 right-0 z-40 bg-background border-b border-border overflow-hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {["home", "services", "process", "whyus", "pricing", "contact"].map((key) => (
+              {["home", "services", "process", "pricing", "whyus", "contact"].map((key) => (
                 <NavLink key={key} active={activeSection === key} onClick={() => scrollTo(refs[`${key}Ref` as keyof typeof refs])}>
                   {t(`nav.${key}`)}
                 </NavLink>
