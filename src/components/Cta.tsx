@@ -31,7 +31,7 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10">{t("cta.subtitle")}</p>
               <Button
                 size="lg"
-                className="group text-lg px-10 py-6 rounded-full font-semibold shadow-lg bg-neutral-900 text-white hover:bg-neutral-800 focus:ring-4 focus:ring-neutral-700/30 transition-all duration-200"
+                className="group text-lg px-10 py-6 rounded-full font-semibold shadow-lg bg-background text-foreground hover:bg-card focus:ring-4 focus:ring-ring/30 transition-all duration-200"
                 onMouseEnter={enterButton}
                 onMouseLeave={leaveLink}
                 onClick={() => {

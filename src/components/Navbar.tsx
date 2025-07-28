@@ -50,9 +50,9 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
               if (isMobile) setMenuOpen(false);
             }}
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 shadow-md animate-pulse">
-              <div className="w-full h-full bg-gray-900 rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full border-2 border-pink-200"></div>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary p-1 shadow-md animate-pulse">
+              <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
+                <div className="w-4 h-4 rounded-full border-2 border-secondary"></div>
               </div>
             </div>
             {/* <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">Norpus Studio</span> */}

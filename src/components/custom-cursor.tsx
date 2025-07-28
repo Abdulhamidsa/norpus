@@ -84,7 +84,7 @@ export default function CustomCursor({ variant = "default" }: { variant?: Cursor
         transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
       />
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-50 bg-white"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-50 bg-background"
         style={{
           x: cursorX,
           y: cursorY,

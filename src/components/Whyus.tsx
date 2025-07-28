@@ -38,9 +38,7 @@ export const WhyUs = forwardRef<HTMLDivElement, Props>(({ enterLink, leaveLink }
               {/* Feature Item */}
               <div className="flex items-start pl-15 gap-6 p-8 rounded-2xl hover:bg-accent/5 transition-colors duration-300 border-b border-border/50 last:border-b-0">
                 {/* Icon */}
-                <div className="flex-shrink-0 bg-primary w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
-                  <div className="text-secondary">{feature.icon}</div>
-                </div>
+                <div className="flex-shrink-0 bg-primary w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300 text-white">{feature.icon}</div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
@@ -49,7 +47,7 @@ export const WhyUs = forwardRef<HTMLDivElement, Props>(({ enterLink, leaveLink }
                 </div>
 
                 {/* Number indicator */}
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary/70 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">{String(index + 1).padStart(2, "0")}</div>
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary/70 transition-all duration-300 group-hover:bg-white group-hover:text-black">{String(index + 1).padStart(2, "0")}</div>
               </div>
 
               {/* Subtle hover line */}

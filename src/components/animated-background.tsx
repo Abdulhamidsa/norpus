@@ -28,6 +28,7 @@ export default function AnimatedBackground() {
       x: number;
       y: number;
       size: number;
+      baseSize: number;
       speedX: number;
       speedY: number;
       color: string;
@@ -37,19 +38,28 @@ export default function AnimatedBackground() {
       vy = 0;
       friction = 0.95;
       springFactor = 0.05;
+      pulseSpeed: number;
+      pulsePhase: number;
+      // parallaxFactor: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
         this.originalX = this.x;
         this.originalY = this.y;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.2;
-        this.speedY = (Math.random() - 0.5) * 0.2;
+        this.baseSize = Math.random() * 1.2 + 0.7;
+        this.size = this.baseSize;
+        this.speedX = (Math.random() - 0.5) * 0.11;
+        this.speedY = (Math.random() - 0.5) * 0.11;
         this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.2})`;
+        this.pulseSpeed = Math.random() * 0.8 + 0.4;
+        this.pulsePhase = Math.random() * Math.PI * 2;
+        // this.parallaxFactor = Math.random() * 0.5 + 0.7;
       }
 
-      update() {
+      update(time: number) {
+        // No parallax effect
+
         // Mouse interaction
         const dx = mousePosition.x - this.x;
         const dy = mousePosition.y - this.y;
@@ -90,43 +100,53 @@ export default function AnimatedBackground() {
 
         if (this.originalY > canvas!.height) this.originalY = 0;
         else if (this.originalY < 0) this.originalY = canvas!.height;
+
+        // Pulse animation (smaller amplitude)
+        this.size = this.baseSize + Math.sin(time * this.pulseSpeed + this.pulsePhase) * 0.13;
       }
 
       draw() {
         if (!ctx) return;
+        ctx.save();
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 6;
         ctx.fill();
+        ctx.restore();
       }
     }
 
     function initParticles() {
       particles = [];
-      const particleCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 15000), 80);
-
+      // Fewer particles for a calmer effect
+      const particleCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 14000), 70);
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
     }
 
     function connectParticles() {
-      const maxDistance = 150;
-
+      const maxDistance = 140;
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
+        for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-
           if (distance < maxDistance) {
             const opacity = 1 - distance / maxDistance;
-            ctx!.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.15})`;
-            ctx!.lineWidth = 1;
+            ctx!.save();
+            ctx!.strokeStyle = `rgba(255,255,255,${opacity * 0.08})`;
+            ctx!.lineWidth = 0.7;
+            // Draw a quadratic curve for a more organic look
             ctx!.beginPath();
+            const midX = (particles[i].x + particles[j].x) / 2 + (dx + dy) * 0.04;
+            const midY = (particles[i].y + particles[j].y) / 2 - (dx - dy) * 0.04;
             ctx!.moveTo(particles[i].x, particles[i].y);
-            ctx!.lineTo(particles[j].x, particles[j].y);
+            ctx!.quadraticCurveTo(midX, midY, particles[j].x, particles[j].y);
             ctx!.stroke();
+            ctx!.restore();
           }
         }
       }
@@ -140,12 +160,11 @@ export default function AnimatedBackground() {
     function animate() {
       if (!canvas) return;
       ctx!.clearRect(0, 0, canvas.width, canvas.height);
-
+      const now = performance.now() / 1000;
       for (const particle of particles) {
-        particle.update();
+        particle.update(now);
         particle.draw();
       }
-
       connectParticles();
       animationFrameId = requestAnimationFrame(animate);
     }
@@ -168,7 +187,7 @@ export default function AnimatedBackground() {
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80 z-0"></div>
       <div className="absolute inset-0 z-0">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-3xl"
           animate={{
             x: [0, 30, 0, -30, 0],
             y: [0, -30, 0, 30, 0],
@@ -180,7 +199,7 @@ export default function AnimatedBackground() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full filter blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full filter blur-3xl"
           animate={{
             x: [0, -30, 0, 30, 0],
             y: [0, 30, 0, -30, 0],
