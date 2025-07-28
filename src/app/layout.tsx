@@ -8,7 +8,6 @@ export const metadata = {
   title: "Norpus Studio",
   description: "Welcome to Norpus Studio – innovative digital design & creative solutions.",
   keywords: "Norpus, Studio, digital, design, creative, solutions",
-  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.ico",
   },

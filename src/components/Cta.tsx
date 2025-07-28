@@ -17,18 +17,21 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
       {/* CTA Section */}
       <section ref={ref} className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
-            <div className="absolute inset-0 z-0">
-              <div className="absolute top-0 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full filter blur-3xl"></div>
-              <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-pink-500/20 rounded-full filter blur-3xl"></div>
-            </div>
-
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("cta.title")}</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">{t("cta.subtitle")}</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative mx-auto max-w-2xl rounded-3xl bg-background/90 backdrop-blur-lg border border-border/30 shadow-2xl p-8 md:p-14 flex flex-col items-center text-center overflow-hidden"
+          >
+            {/* Minimal, subtle accent */}
+            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-black/40 via-background/80 to-black/20 opacity-70" />
+            <div className="relative z-10 flex flex-col items-center">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground drop-shadow-lg">{t("cta.title")}</h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10">{t("cta.subtitle")}</p>
               <Button
                 size="lg"
-                className="group text-lg px-8 py-6 cursor-pointer"
+                className="group text-lg px-10 py-6 rounded-full font-semibold shadow-lg bg-neutral-900 text-white hover:bg-neutral-800 focus:ring-4 focus:ring-neutral-700/30 transition-all duration-200"
                 onMouseEnter={enterButton}
                 onMouseLeave={leaveLink}
                 onClick={() => {

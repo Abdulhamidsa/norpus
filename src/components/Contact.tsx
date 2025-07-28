@@ -16,7 +16,7 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
   return (
     <>
       {/* Contact Section */}
-      <section ref={ref} className="py-20 bg-gradient-to-b from-accent/5 to-background">
+      <section ref={ref} className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("contact.title")}</h2>
@@ -24,7 +24,7 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-card border border-border/40 rounded-xl p-8 shadow-lg">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-background border border-border/40 rounded-xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold mb-6">{t("contact.info.title")}</h3>
               <p className="text-muted-foreground mb-8">{t("contact.info.subtitle")}</p>
 
@@ -80,7 +80,7 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-card border border-border/40 rounded-xl p-8 shadow-lg">
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-background border border-border/40 rounded-xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold mb-6">{t("contact.form.title")}</h3>
               <p className="text-muted-foreground mb-8">{t("contact.form.subtitle")}</p>
 

@@ -24,6 +24,14 @@ type NavbarProps = {
     contactRef: React.RefObject<HTMLDivElement>;
   };
 };
+const navKeys = [
+  { key: "home", ref: "heroRef" },
+  { key: "services", ref: "servicesRef" },
+  { key: "process", ref: "processRef" },
+  { key: "pricing", ref: "pricingRef" },
+  { key: "whyus", ref: "whyUsRef" },
+  { key: "contact", ref: "contactRef" },
+];
 
 export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveLink, refs }: NavbarProps) {
   const isMobile = useMobile();
@@ -35,15 +43,21 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="flex items-center gap-3"
+            onClick={() => {
+              if (isMobile) setMenuOpen(false);
+            }}
+          >
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 shadow-md animate-pulse">
               <div className="w-full h-full bg-gray-900 rounded-full flex items-center justify-center">
                 <div className="w-4 h-4 rounded-full border-2 border-pink-200"></div>
               </div>
             </div>
             {/* <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">Norpus Studio</span> */}
+            <span className="text-xl font-bold">Norpus</span>
           </Link>
-          <span className="text-xl font-bold">Norpus</span>
         </motion.div>
 
         {/* Navigation */}
@@ -74,7 +88,6 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink active={activeSection === "contact"} onClick={() => scrollTo(refs.contactRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
               {t("nav.contact")}
             </NavLink>
-
             <LanguageToggle onMouseEnter={enterButton} onMouseLeave={leaveLink} />
           </motion.nav>
         )}
@@ -85,8 +98,8 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
         {menuOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="fixed top-[72px] left-0 right-0 z-40 bg-background border-b border-border overflow-hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {["home", "services", "process", "pricing", "whyus", "contact"].map((key) => (
-                <NavLink key={key} active={activeSection === key} onClick={() => scrollTo(refs[`${key}Ref` as keyof typeof refs])}>
+              {navKeys.map(({ key, ref }) => (
+                <NavLink key={key} active={activeSection === key} onClick={() => scrollTo(refs[ref as keyof typeof refs])}>
                   {t(`nav.${key}`)}
                 </NavLink>
               ))}

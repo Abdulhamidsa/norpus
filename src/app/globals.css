@@ -1,3 +1,32 @@
+@layer components {
+  .btn-animated-border {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .btn-animated-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid var(--color-primary, #7c3aed);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: opacity 0.15s, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-animated-border:hover::before,
+  .btn-animated-border:focus-visible::before {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  .btn-animated-border > span {
+    position: relative;
+    z-index: 2;
+  }
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -106,5 +135,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  button {
+    @apply cursor-pointer;
   }
 }
