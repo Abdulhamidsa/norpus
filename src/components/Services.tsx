@@ -44,8 +44,8 @@ function ServiceCard({ icon, title, description, delay = 0, onMouseEnter, onMous
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all"
+      // whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      className=" border border-border rounded-xl hover:border-primary/30 p-6 hover:shadow-lg transition-all"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

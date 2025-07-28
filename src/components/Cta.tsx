@@ -32,7 +32,7 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
                 onMouseEnter={enterButton}
                 onMouseLeave={leaveLink}
                 onClick={() => {
-                  window.open("https://form-subbmition.vercel.app/", "_blank");
+                  window.open("https://form.norpus.com/", "_blank");
                 }}
               >
                 {t("cta.button")}
