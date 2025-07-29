@@ -42,7 +42,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex items-center gap-2">
           <Link
             href="/"
             className="flex items-center gap-3"
@@ -64,12 +64,12 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
         {isMobile ? (
           <div className="flex items-center gap-4">
             <LanguageToggle onMouseEnter={enterButton} onMouseLeave={leaveLink} />
-            <motion.button initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} onClick={() => setMenuOpen(!menuOpen)} className="p-2 rounded-md hover:bg-accent" onMouseEnter={enterButton} onMouseLeave={leaveLink}>
+            <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} onClick={() => setMenuOpen(!menuOpen)} className="p-2 rounded-md hover:bg-accent" onMouseEnter={enterButton} onMouseLeave={leaveLink}>
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
           </div>
         ) : (
-          <motion.nav initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="flex items-center gap-8">
+          <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="flex items-center gap-8">
             <NavLink active={activeSection === "home"} onClick={() => scrollTo(refs.heroRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
               {t("nav.home")}
             </NavLink>
@@ -96,7 +96,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="fixed top-[72px] left-0 right-0 z-40 bg-background border-b border-border overflow-hidden">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed top-[72px] left-0 right-0 z-40 bg-background border-b border-border overflow-hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               {navKeys.map(({ key, ref }) => (
                 <NavLink key={key} active={activeSection === key} onClick={() => scrollTo(refs[ref as keyof typeof refs])}>
@@ -113,14 +113,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
 
 function NavLink({ children, active = false, onClick, onMouseEnter, onMouseLeave }: { children: React.ReactNode; active?: boolean; onClick?: () => void; onMouseEnter?: () => void; onMouseLeave?: () => void }) {
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={cn("relative text-sm font-medium transition-colors hover:text-foreground cursor-pointer", active ? "text-foreground" : "text-muted-foreground")}
-    >
+    <motion.button onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={cn("relative text-sm font-medium transition-colors hover:text-foreground cursor-pointer", active ? "text-foreground" : "text-muted-foreground")}>
       {children}
       {active && <motion.div layoutId="activeNavIndicator" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />}
     </motion.button>

@@ -1,3 +1,11 @@
+/* Hide native scrollbar utility for mobile slider */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 @layer components {
   .btn-animated-border {
     position: relative;

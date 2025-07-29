@@ -2,6 +2,7 @@ import { useTranslation } from "@/hooks/use-translation";
 import { motion } from "framer-motion";
 import { Globe, Layers, Database, Code, MessageSquare } from "lucide-react";
 import React, { forwardRef } from "react";
+import { SectionHeading } from "./ui/section-heading";
 
 type HeroProps = {
   enterButton: () => void;
@@ -16,9 +17,9 @@ export const Services = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, le
       {/* Services Section */}
       <section ref={ref} className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("services.title")}</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("services.subtitle")}</p>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-16">
+            <SectionHeading>{t("services.title")}</SectionHeading>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-center">{t("services.subtitle")}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -40,16 +41,15 @@ Services.displayName = "Services";
 function ServiceCard({ icon, title, description, delay = 0, onMouseEnter, onMouseLeave }: { icon: React.ReactNode; title: string; description: string; delay?: number; onMouseEnter?: () => void; onMouseLeave?: () => void }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      // whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className=" border border-border rounded-xl hover:border-primary/30 p-6 hover:shadow-lg transition-all"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">{icon}</div>
+      <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-white">{icon}</div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
     </motion.div>
