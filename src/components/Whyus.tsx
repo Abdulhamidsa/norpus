@@ -7,8 +7,9 @@ import { forwardRef } from "react";
 import React from "react";
 import { SectionHeading } from "./ui/section-heading";
 
+type Feature = { icon: React.ReactNode; key: string };
 // MobileSlider component for horizontal chevron navigation
-function MobileSlider({ features, t }: { features: any[]; t: any }) {
+function MobileSlider({ features, t }: { features: Feature[]; t: (key: string) => string }) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
@@ -41,7 +42,6 @@ function MobileSlider({ features, t }: { features: any[]; t: any }) {
     if (!el) return;
     el.addEventListener("scroll", handleScroll, { passive: true });
     return () => el.removeEventListener("scroll", handleScroll);
-    // eslint-disable-next-line
   }, []);
 
   const scrollBy = (dir: number) => {
