@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
 import { forwardRef } from "react";
+import { SectionHeading } from "./ui/section-heading";
 
 type ProcessProps = {
   enterLink: () => void;
@@ -20,7 +21,7 @@ export const Pricing = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
     <section ref={ref} className="py-20">
       <div className="container mx-auto px-4">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("pricing.title")}</h2>
+          <SectionHeading>{t("pricing.title")}</SectionHeading>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("pricing.subtitle")}</p>
         </motion.div>
 
@@ -127,7 +128,7 @@ function PricingCard({
         <div className="mb-4">
           <div className="flex items-end justify-center gap-2 mb-2">
             <span className="text-5xl font-bold tracking-tight">{formattedPrice}</span>
-            <span className="text-lg text-muted-foreground pb-2">/måned</span>
+            <span className="text-lg text-muted-foreground pb-2">/monthly</span>
           </div>
         </div>
         <p className="text-muted-foreground leading-relaxed">{description}</p>

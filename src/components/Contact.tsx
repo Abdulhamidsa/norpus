@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { useTranslation } from "@/hooks/use-translation";
+import { SectionHeading } from "./ui/section-heading";
 
 type ContactProps = {
   leaveLink: () => void;
@@ -19,7 +20,7 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
       <section ref={ref} className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("contact.title")}</h2>
+            <SectionHeading>{t("contact.title")}</SectionHeading>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("contact.subtitle")}</p>
           </motion.div>
 
@@ -47,11 +48,11 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
                   <div>
                     <h4 className="font-medium text-lg">{t("contact.info.email.title")}</h4>
                     <p className="text-muted-foreground">hello@norpus.com</p>
-                    <p className="text-muted-foreground mt-1">support@norpus.com</p>
+                    {/* <p className="text-muted-foreground mt-1">support@norpus.com</p> */}
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
@@ -65,7 +66,7 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
                       {t("contact.info.phone.whatsapp")}
                     </a>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">

@@ -114,7 +114,7 @@ const translations = {
     "contact.info.subtitle": "We're located in Copenhagen and available during business hours. Reach out through any of these channels for a quick response.",
 
     "contact.info.location.title": "Location",
-    "contact.info.location.address": "Nørrebrogade 42, Copenhagen, 2200",
+    "contact.info.location.address": "Nørrebrogade, Copenhagen, 2200",
     "contact.info.location.country": "Denmark",
 
     "contact.info.email.title": "Email",
@@ -298,7 +298,7 @@ const translations = {
     "contact.info.subtitle": "Vi er placeret i København og tilgængelige i åbningstiden. Kontakt os gennem en af disse kanaler for et hurtigt svar.",
 
     "contact.info.location.title": "Placering",
-    "contact.info.location.address": "Nørrebrogade 42, København, 2200",
+    "contact.info.location.address": "Nørrebrogade, København, 2200",
     "contact.info.location.country": "Danmark",
 
     "contact.info.email.title": "Email",

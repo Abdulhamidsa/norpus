@@ -37,15 +37,19 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, leaveL
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="group text-lg px-8 py-6 cursor-pointer"
+              className="group text-lg px-8 py-6 cursor-pointer bg-primary/10 text-primary border border-l-4 border-l-primary border-primary shadow-md hover:bg-white hover:text-black hover:shadow-lg transition-all duration-300"
               onMouseEnter={enterButton}
               onMouseLeave={leaveLink}
               onClick={() => {
                 window.open("https://form.norpus.com/", "_blank");
               }}
             >
-              {t("hero.cta")}
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              {/* Vertical accent border */}
+              <span className="absolute -left-5 top-2 bottom-2 w-1 rounded-full bg-primary" />
+              <span className="relative flex items-center">
+                {t("hero.cta")}
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:scale-110" />
+              </span>
             </Button>
           </motion.div>
         </motion.div>
