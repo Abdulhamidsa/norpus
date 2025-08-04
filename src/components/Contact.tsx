@@ -115,11 +115,7 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
                   <Textarea id="message" placeholder={t("contact.form.message.placeholder")} rows={5} onMouseEnter={enterButton} onMouseLeave={leaveLink} />
                 </div>
 
-                <Button
-                  className="w-full group relative text-base px-6 py-4 bg-transparent text-primary border border-l-4 border-l-primary border-primary shadow-md hover:bg-white hover:text-black hover:shadow-lg transition-all duration-300"
-                  onMouseEnter={enterButton}
-                  onMouseLeave={leaveLink}
-                >
+                <Button className="group text-md px-10 py-6 rounded-md shadow-lg bg-primary/50 text-foreground hover:bg-transparent border hover:border focus:ring-4 focus:ring-ring/30 transition-all duration-200" onMouseEnter={enterButton} onMouseLeave={leaveLink}>
                   <span className="relative flex items-center justify-center">{t("contact.form.submit")}</span>
                 </Button>
               </div>
