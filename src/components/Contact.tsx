@@ -116,17 +116,11 @@ export const Contact = forwardRef<HTMLDivElement, ContactProps>(({ leaveLink, en
                 </div>
 
                 <Button
-                  className="w-full group relative text-base px-6 py-4 bg-primary/10 text-primary border border-l-4 border-l-primary border-primary shadow-md hover:bg-white hover:text-black hover:shadow-lg transition-all duration-300"
+                  className="w-full group relative text-base px-6 py-4 bg-transparent text-primary border border-l-4 border-l-primary border-primary shadow-md hover:bg-white hover:text-black hover:shadow-lg transition-all duration-300"
                   onMouseEnter={enterButton}
                   onMouseLeave={leaveLink}
                 >
-                  {/* Vertical accent bar */}
-                  <span className="absolute -left-4 top-2 bottom-2 w-1 rounded-full bg-primary" />
-
-                  <span className="relative flex items-center justify-center">
-                    {t("contact.form.submit")}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:scale-110 group-hover:text-primary" />
-                  </span>
+                  <span className="relative flex items-center justify-center">{t("contact.form.submit")}</span>
                 </Button>
               </div>
             </motion.div>
