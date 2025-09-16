@@ -106,7 +106,7 @@ export default function Home() {
       <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
       <Cta enterButton={enterButton} leaveLink={leaveLink} ref={contactRef} />
       {/* Contact Section */}
-      <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} />
+      {/* <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} /> */}
 
       {/* Footer */}
       <Footer />
