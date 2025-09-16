@@ -145,6 +145,10 @@ const translations = {
 
     "footer.location": "Located in Copenhagen, Denmark. Available Monday-Friday, 9:00 AM - 6:00 PM.",
     "footer.rights": "All rights reserved.",
+    "footer.description": "Creating beautiful, functional digital experiences tailored to your needs.",
+    "footer.contact": "Get in Touch",
+    "footer.privacy": "Privacy Policy",
+    "footer.terms": "Terms of Service",
 
     "language.toggle": "Dansk",
 
@@ -329,6 +333,10 @@ const translations = {
 
     "footer.location": "Beliggende i København, Danmark. Tilgængelig mandag-fredag, 9:00 - 18:00.",
     "footer.rights": "Alle rettigheder forbeholdes.",
+    "footer.description": "Vi skaber smukke og funktionelle digitale oplevelser tilpasset dine behov.",
+    "footer.contact": "Kontakt Os",
+    "footer.privacy": "Privatlivspolitik",
+    "footer.terms": "Handelsbetingelser",
 
     "language.toggle": "English",
     "whyus.title": "Hvorfor Vælge Os",
