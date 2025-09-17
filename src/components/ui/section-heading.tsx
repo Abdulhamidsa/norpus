@@ -5,8 +5,8 @@ export function SectionHeading({ children, className }: { children: React.ReactN
   return (
     <div className={cn("mb-8 flex flex-col items-center", className)}>
       <h2 className="text-3xl md:text-5xl font-bold mb-2 text-center">{children}</h2>
-      <div className="relative flex justify-center h-4 w-full">
-        <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-primary/40 via-primary to-primary/40" />
+      <div className="flex flex-col items-center">
+        <div className="w-16 h-0.5 bg-gradient-to-r from-primary/80 to-primary/10"></div>
       </div>
     </div>
   );

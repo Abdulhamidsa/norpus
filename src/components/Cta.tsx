@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
 type ProcessProps = {
   leaveLink?: () => void;
@@ -15,34 +15,37 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
   return (
     <>
       {/* CTA Section */}
-      <section ref={ref} className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative mx-auto max-w-2xl rounded-3xl bg-background/90 backdrop-blur-lg border border-border/30 shadow-2xl p-8 md:p-14 flex flex-col items-center text-center overflow-hidden"
-          >
-            {/* Minimal, subtle accent */}
-            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-black/40 via-background/80 to-black/20 opacity-70" />
-            <div className="relative z-10 flex flex-col items-center">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground drop-shadow-lg">{t("cta.title")}</h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10">{t("cta.subtitle")}</p>
-              <Button
-                variant="gradient"
-                size="lg"
-                className="group text-base font-medium"
-                onMouseEnter={enterButton}
-                onMouseLeave={leaveLink}
-                onClick={() => {
-                  window.open("https://form.norpus.com/", "_blank");
-                }}
-              >
-                {t("cta.button")}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+      <section ref={ref} className="py-20 relative">
+        {/* Subtle background accent */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-accent/5 pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 relative">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mx-auto max-w-3xl flex flex-col items-center">
+            {/* Option 1: Dot with gradient lines */}
+            <div className="flex items-center justify-center mb-10">
+              <div className="h-px w-6 bg-gradient-to-r from-transparent to-primary/60"></div>
+              <div className="w-2 h-2 rounded-full bg-primary mx-2"></div>
+              <div className="h-px w-6 bg-gradient-to-l from-transparent to-primary/60"></div>
             </div>
+
+            {/* Content */}
+            <div className="text-center mb-10 relative">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-6 relative">
+                Ready to Transform Your Digital Presence?
+                {/* Option 2: Underline accent that grows on hover (added via pseudo-element) */}
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-0.5 w-16 bg-gradient-to-r from-primary/80 to-primary/30 group-hover:w-32 transition-all duration-700"></span>
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">{t("cta.subtitle")}</p>
+            </div>
+
+            {/* Button with enhanced styling */}
+            <a href="https://form.norpus.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center py-3 px-8 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-all" onMouseEnter={enterButton} onMouseLeave={leaveLink}>
+              <span className="font-medium">{t("cta.button")}</span>
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1.5" />
+            </a>
+
+            {/* Optional caption text */}
+            <p className="mt-5 text-xs text-muted-foreground">No obligations. Free initial consultation.</p>
           </motion.div>
         </div>
       </section>
