@@ -16,7 +16,7 @@ export const Services = forwardRef<HTMLDivElement, ServicesProps>(({ enterButton
   const isMobile = useMobile();
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden">
+    <section ref={ref} className="py-24 relative overflow-hidden" data-section="services" id="services">
       {/* Subtle background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background pointer-events-none"></div>
       <div className="absolute w-[800px] h-[800px] -top-[400px] -left-[400px] bg-primary/3 rounded-full blur-3xl"></div>
