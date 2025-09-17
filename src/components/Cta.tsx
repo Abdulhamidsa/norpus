@@ -22,11 +22,11 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
         <div className="container mx-auto px-4 relative">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mx-auto max-w-3xl flex flex-col items-center">
             {/* Option 1: Dot with gradient lines */}
-            <div className="flex items-center justify-center mb-10">
+            {/* <div className="flex items-center justify-center mb-10">
               <div className="h-px w-6 bg-gradient-to-r from-transparent to-primary/60"></div>
               <div className="w-2 h-2 rounded-full bg-primary mx-2"></div>
               <div className="h-px w-6 bg-gradient-to-l from-transparent to-primary/60"></div>
-            </div>
+            </div> */}
 
             {/* Content */}
             <div className="text-center mb-10 relative">
