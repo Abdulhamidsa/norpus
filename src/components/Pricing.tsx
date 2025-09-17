@@ -18,15 +18,15 @@ export const Pricing = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
   const { t } = useTranslation();
 
   return (
-    <section ref={ref} className="py-20">
+    <section ref={ref} className="py-16">
       <div className="container mx-auto px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
           <SectionHeading>{t("pricing.title")}</SectionHeading>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("pricing.subtitle")}</p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t("pricing.subtitle")}</p>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Basic Plan */}
             <PricingCard
               title={t("pricing.basic.title")}
@@ -57,10 +57,16 @@ export const Pricing = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
             />
           </div>
 
-          {/* Bottom accent line */}
-          <motion.div initial={{ opacity: 0, scaleX: 0 }} whileInView={{ opacity: 1, scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} className="mt-16">
-            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          </motion.div>
+          {/* Contact info */}
+          <div className="mt-10 text-center text-sm text-muted-foreground">
+            <p>
+              Need a custom solution?{" "}
+              <a href="#contact" className="text-primary hover:underline">
+                Contact us
+              </a>{" "}
+              for enterprise pricing.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -108,40 +114,40 @@ function PricingCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className={cn("relative rounded-3xl p-8 border transition-all duration-300 h-full flex flex-col group border-border/50 hover:border-border hover:shadow-lg")}
+      className={cn("relative rounded-xl p-6 border transition-all duration-300", "h-full flex flex-col group border-border/50 hover:border-primary/30", popular ? "bg-accent/5" : "bg-background")}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       {/* Popular badge */}
       {popular && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-          <div className="bg-primary text-primary-foreground text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
-            <Star className="h-4 w-4 fill-current" />
-            {language === "da" ? "Mest Populær" : "Most Popular"}
+        <div className="absolute -top-3 right-4">
+          <div className="bg-primary/90 text-primary-foreground text-xs font-medium px-3 py-1 rounded-full flex items-center gap-1.5">
+            <Star className="h-3 w-3 fill-current" />
+            {language === "da" ? "Populær" : "Popular"}
           </div>
         </div>
       )}
 
       {/* Header */}
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">{title}</h3>
-        <div className="mb-4">
-          <div className="flex items-end justify-center gap-2 mb-2">
-            <span className="text-5xl font-bold tracking-tight">{formattedPrice}</span>
-            <span className="text-lg text-muted-foreground pb-2">/monthly</span>
+      <div className="mb-5">
+        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+        <div className="mb-3">
+          <div className="flex items-end gap-1.5">
+            <span className="text-4xl font-bold tracking-tight">{formattedPrice}</span>
+            <span className="text-sm text-muted-foreground pb-1">/mo</span>
           </div>
         </div>
-        <p className="text-muted-foreground leading-relaxed">{description}</p>
+        <p className="text-sm text-muted-foreground">{description}</p>
       </div>
 
       {/* Features */}
-      <div className="space-y-4 mb-8 flex-1">
+      <div className="space-y-3 mb-6 flex-1">
         {features.map((feature, index) => (
-          <motion.div key={index} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: delay + index * 0.05 }} className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-              <Check className="h-4 w-4 text-primary" />
+          <motion.div key={index} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: delay + index * 0.05 }} className="flex items-start gap-2">
+            <div className="flex-shrink-0 w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+              <Check className="h-3 w-3 text-primary" />
             </div>
-            <span className="text-foreground leading-relaxed">{feature}</span>
+            <span className="text-sm text-foreground">{feature}</span>
           </motion.div>
         ))}
       </div>
@@ -153,25 +159,22 @@ function PricingCard({
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "inline-flex w-full items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium",
-            "h-11 px-6 transition-all duration-200 gap-2",
-            popular ? "bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90" : "bg-transparent border border-border hover:bg-accent/50"
+            "inline-flex w-full items-center justify-center whitespace-nowrap rounded-md text-sm font-medium",
+            "h-10 px-4 transition-all duration-200 gap-1.5",
+            popular ? "bg-primary text-primary-foreground hover:opacity-90" : "bg-transparent border border-border hover:border-primary/30"
           )}
           onMouseEnter={onButtonEnter}
           onMouseLeave={onButtonLeave}
         >
           {cta}
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
             <polyline points="15 3 21 3 21 9" />
             <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
         </a>
-        <div className="text-xs text-muted-foreground mt-2 text-center">Opens a secure form in a new tab.</div>
+        <div className="text-xs text-muted-foreground/70 mt-2 text-center">Opens in a new tab</div>
       </div>
-
-      {/* Subtle hover effect */}
-      <div className={cn("absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-accent/5 to-background/5")} />
     </motion.div>
   );
 }
