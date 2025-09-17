@@ -39,68 +39,96 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
   const { t } = useTranslation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-lg border-b border-border/30 shadow-sm">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex items-center gap-2">
           <Link
             href="/"
-            className="flex items-center gap-2.5"
+            className="flex items-center gap-3"
             onClick={() => {
               if (isMobile) setMenuOpen(false);
             }}
           >
-            <div className="relative w-8 h-8 rounded-md bg-gradient-to-r from-primary to-primary/80 shadow-sm flex items-center justify-center">
-              <span className="text-primary-foreground text-lg font-bold">N</span>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary p-1 shadow-md animate-pulse">
+              <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
+                <div className="w-4 h-4 rounded-full border-2 border-secondary"></div>
+              </div>
             </div>
-            <span className="text-lg font-semibold tracking-tight">Norpus</span>
+            {/* <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">Norpus Studio</span> */}
+            <span className="text-xl font-bold">Norpus</span>
           </Link>
         </motion.div>
 
         {/* Navigation */}
         {isMobile ? (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <LanguageToggle onMouseEnter={enterButton} onMouseLeave={leaveLink} />
-            <button onClick={() => setMenuOpen(!menuOpen)} className={cn("p-1.5 rounded border border-border/30 transition-all duration-200", menuOpen ? "bg-primary/10 text-primary" : "hover:border-primary/30")} onMouseEnter={enterButton} onMouseLeave={leaveLink}>
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onClick={() => setMenuOpen(!menuOpen)}
+              className={cn("relative p-2.5 rounded-lg border border-border/30 transition-all duration-200", "bg-background/80 backdrop-blur-sm shadow-sm", menuOpen ? "border-primary/40 text-primary" : "hover:border-primary/20 hover:bg-background/90")}
+              onMouseEnter={enterButton}
+              onMouseLeave={leaveLink}
+            >
+              <div className="relative">
+                <motion.span className="absolute inset-0 flex items-center justify-center" animate={{ opacity: menuOpen ? 1 : 0 }} transition={{ duration: 0.2 }}>
+                  <X size={20} strokeWidth={2.5} />
+                </motion.span>
+                <motion.span className="flex items-center justify-center" animate={{ opacity: menuOpen ? 0 : 1 }} transition={{ duration: 0.2 }}>
+                  <Menu size={20} strokeWidth={2.5} />
+                </motion.span>
+              </div>
+            </motion.button>
           </div>
         ) : (
-          <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="flex items-center gap-6">
-            {navKeys.map(({ key, ref }) => (
-              <NavLink key={key} active={activeSection === key} onClick={() => scrollTo(refs[ref as keyof typeof refs])} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
-                {t(`nav.${key}`)}
-              </NavLink>
-            ))}
-            <div className="border-l border-border/30 h-5 mx-1"></div>
+          <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="flex items-center gap-8">
+            <NavLink active={activeSection === "home"} onClick={() => scrollTo(refs.heroRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.home")}
+            </NavLink>
+            <NavLink active={activeSection === "services"} onClick={() => scrollTo(refs.servicesRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.services")}
+            </NavLink>
+            <NavLink active={activeSection === "process"} onClick={() => scrollTo(refs.processRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.process")}
+            </NavLink>
+            <NavLink active={activeSection === "pricing"} onClick={() => scrollTo(refs.pricingRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.pricing")}
+            </NavLink>
+            <NavLink active={activeSection === "whyus"} onClick={() => scrollTo(refs.whyUsRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.whyus")}
+            </NavLink>
+            <NavLink active={activeSection === "contact"} onClick={() => scrollTo(refs.contactRef)} onMouseEnter={enterLink} onMouseLeave={leaveLink}>
+              {t("nav.contact")}
+            </NavLink>
             <LanguageToggle onMouseEnter={enterButton} onMouseLeave={leaveLink} />
           </motion.nav>
         )}
       </div>
 
-      {/* Mobile Menu - Enhanced Design */}
+      {/* Mobile Menu - Redesigned for cleaner minimal look */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed top-[72px] left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/30 overflow-hidden shadow-lg"
           >
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1, staggerChildren: 0.05 }} className="container mx-auto px-4 py-6 flex flex-col">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.05, staggerChildren: 0.07 }} className="container mx-auto px-4 py-6 flex flex-col divide-y divide-border/10">
               {navKeys.map(({ key, ref }, index) => (
-                <motion.div key={key} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}>
-                  <button
-                    className={cn("w-full text-left py-3 border-b border-border/10 flex items-center justify-between", activeSection === key ? "text-primary font-medium" : "text-muted-foreground")}
-                    onClick={() => {
-                      scrollTo(refs[ref as keyof typeof refs]);
-                      setMenuOpen(false);
-                    }}
-                  >
-                    <span className="text-base">{t(`nav.${key}`)}</span>
-                    {activeSection === key && <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>}
+                <motion.div key={key} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 + index * 0.05 }} className={cn("py-4 first:pt-2 last:pb-2", "flex items-center justify-between")}>
+                  <button className={cn("text-base font-medium w-full text-left flex items-center", activeSection === key ? "text-primary" : "text-muted-foreground")} onClick={() => scrollTo(refs[ref as keyof typeof refs])}>
+                    <span className="relative">
+                      {t(`nav.${key}`)}
+                      {activeSection === key && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary" />}
+                    </span>
                   </button>
+                  <motion.div animate={{ rotate: activeSection === key ? 45 : 0 }} className={cn("w-6 h-6 rounded-full flex items-center justify-center", activeSection === key ? "text-primary" : "text-muted-foreground/50")}>
+                    {activeSection === key ? <span className="text-xs font-medium">→</span> : null}
+                  </motion.div>
                 </motion.div>
               ))}
             </motion.div>
@@ -113,14 +141,9 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
 
 function NavLink({ children, active = false, onClick, onMouseEnter, onMouseLeave }: { children: React.ReactNode; active?: boolean; onClick?: () => void; onMouseEnter?: () => void; onMouseLeave?: () => void }) {
   return (
-    <button onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={cn("relative py-1.5 px-1 text-sm transition-colors cursor-pointer group", active ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground")}>
-      {/* Static content */}
-      <span className="relative z-10">{children}</span>
-
-      {/* Better indicator - no layoutId animation to avoid lag */}
-      <div className={cn("absolute bottom-0 left-0 w-full h-[2px] transition-transform duration-200", active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100")}>
-        <div className="w-full h-full bg-primary/80"></div>
-      </div>
-    </button>
+    <motion.button onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={cn("relative text-sm font-medium transition-colors hover:text-foreground cursor-pointer", active ? "text-foreground" : "text-muted-foreground")}>
+      {children}
+      {active && <motion.div layoutId="activeNavIndicator" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />}
+    </motion.button>
   );
 }
