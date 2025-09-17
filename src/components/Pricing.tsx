@@ -152,12 +152,16 @@ function PricingCard({
           href="https://form.norpus.com"
           target="_blank"
           rel="noopener noreferrer"
-          className={cn("w-full h-12 flex justify-center items-center text-base font-semibold rounded-xl transition-all duration-300 border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5")}
+          className={cn(
+            "inline-flex w-full items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium",
+            "h-11 px-6 transition-all duration-200 gap-2",
+            popular ? "bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90" : "bg-transparent border border-border hover:bg-accent/50"
+          )}
           onMouseEnter={onButtonEnter}
           onMouseLeave={onButtonLeave}
         >
           {cta}
-          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
             <polyline points="15 3 21 3 21 9" />
             <line x1="10" y1="14" x2="21" y2="3" />

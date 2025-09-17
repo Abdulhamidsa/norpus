@@ -30,8 +30,9 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
               <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground drop-shadow-lg">{t("cta.title")}</h2>
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10">{t("cta.subtitle")}</p>
               <Button
+                variant="gradient"
                 size="lg"
-                className="group text-lg px-10 py-6 rounded-md font-semibold shadow-lg bg-primary/50 text-foreground hover:bg-transparent border hover:border focus:ring-4 focus:ring-ring/30 transition-all duration-200"
+                className="group text-base font-medium"
                 onMouseEnter={enterButton}
                 onMouseLeave={leaveLink}
                 onClick={() => {
@@ -39,7 +40,7 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
                 }}
               >
                 {t("cta.button")}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </motion.div>
