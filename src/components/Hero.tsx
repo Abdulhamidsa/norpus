@@ -45,7 +45,7 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, leaveL
               }}
             >
               {/* Vertical accent border */}
-              <span className="absolute -left-5 top-2 bottom-2 w-1 rounded-full bg-primary" />
+              {/* <span className="absolute -left-5 top-2 bottom-2 w-1 rounded-full bg-primary" /> */}
               <span className="relative flex items-center">
                 {t("hero.cta")}
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:text-primary group-hover:scale-110" />
