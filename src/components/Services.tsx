@@ -1,10 +1,9 @@
-import { useTranslation } from "@/hooks/use-translation";
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Globe, Layers, Database, Code, MessageSquare, Sparkles } from "lucide-react";
-import React, { forwardRef } from "react";
-import { SectionHeading } from "./ui/section-heading";
+import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
-import { useMobile } from "@/hooks/use-mobile";
+import { SectionHeading } from "./ui/section-heading";
 
 type ServicesProps = {
   enterButton: () => void;
@@ -13,7 +12,7 @@ type ServicesProps = {
 
 export const Services = forwardRef<HTMLDivElement, ServicesProps>(({ enterButton, leaveLink }, ref) => {
   const { t } = useTranslation();
-  const isMobile = useMobile();
+  // Removed unused isMobile variable
 
   return (
     <section ref={ref} className="py-24 relative overflow-hidden" data-section="services" id="services">

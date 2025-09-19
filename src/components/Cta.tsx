@@ -1,14 +1,13 @@
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import React, { forwardRef, useState } from "react";
-import { Button } from "./ui/button";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 type ProcessProps = {
   leaveLink?: () => void;
   enterButton: () => void;
   leaveButton?: () => void;
 };
-import { useTranslation } from "@/hooks/use-translation";
 
 export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterButton }, ref) => {
   const { t } = useTranslation();

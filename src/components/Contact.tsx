@@ -1,11 +1,11 @@
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Globe, Mail, Clock } from "lucide-react";
-import React, { forwardRef } from "react";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { Textarea } from "./ui/textarea";
 import { useTranslation } from "@/hooks/use-translation";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 import { SectionHeading } from "./ui/section-heading";
+import { Textarea } from "./ui/textarea";
 
 type ContactProps = {
   leaveLink: () => void;

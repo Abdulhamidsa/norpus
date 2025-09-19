@@ -1,7 +1,7 @@
-import { useTranslation } from "@/hooks/use-translation";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Briefcase, Star, Users, Award } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import { useTranslation } from "@/hooks/use-translation";
 
 export const Stats = () => {
   const { t } = useTranslation();

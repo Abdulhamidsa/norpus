@@ -1,7 +1,7 @@
 import React from "react";
-import { useTranslation } from "@/hooks/use-translation";
 import Link from "next/link";
 import { Instagram, Linkedin, Mail } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 export const Footer = () => {
   const { t } = useTranslation();

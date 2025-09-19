@@ -1,10 +1,10 @@
 "use client";
 
-import { useTranslation } from "@/hooks/use-translation";
-import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
-import { forwardRef } from "react";
+import { useTranslation } from "@/hooks/use-translation";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "./ui/section-heading";
 
 type ProcessProps = {

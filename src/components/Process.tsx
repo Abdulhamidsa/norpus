@@ -1,7 +1,7 @@
-import { useTranslation } from "@/hooks/use-translation";
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { ClipboardList, DollarSign, Handshake, Code2, Rocket } from "lucide-react";
-import React, { forwardRef } from "react";
+import { useTranslation } from "@/hooks/use-translation";
 import { SectionHeading } from "./ui/section-heading";
 
 type ProcessProps = {

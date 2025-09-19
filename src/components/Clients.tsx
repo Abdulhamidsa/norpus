@@ -1,6 +1,6 @@
-import { useTranslation } from "@/hooks/use-translation";
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
+import { useTranslation } from "@/hooks/use-translation";
 
 export const Clients = () => {
   const { t } = useTranslation();

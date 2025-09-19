@@ -1,8 +1,8 @@
 import type React from "react";
 import "@/app/globals.css";
-import { TranslationProvider } from "@/hooks/use-translation";
-import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "next-themes";
+import { TranslationProvider } from "@/hooks/use-translation";
 
 export const metadata = {
   title: "Norpus Studio",

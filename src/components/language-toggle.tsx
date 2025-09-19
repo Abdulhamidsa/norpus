@@ -1,9 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translation";
-import { Languages } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface LanguageToggleProps {
   onMouseEnter?: () => void;

@@ -1,10 +1,10 @@
 "use client";
 
+import { forwardRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, LaptopIcon, Users, Rocket, Video, Globe } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
-import { forwardRef } from "react";
-import React from "react";
 import { SectionHeading } from "./ui/section-heading";
 
 type Feature = { icon: React.ReactNode; key: string };

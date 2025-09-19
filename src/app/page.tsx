@@ -1,18 +1,17 @@
 "use client";
 
 import type React from "react";
-
 import { useEffect, useRef, useState } from "react";
-import { useMobile } from "@/hooks/use-mobile";
+// import { Cta } from "@/components/Cta";
 import CustomCursor from "@/components/custom-cursor";
-import { Hero } from "@/components/Hero";
-import { Services } from "@/components/Services";
-import { Process } from "@/components/Process";
-import { Pricing } from "@/components/Pricing";
-import { Cta } from "@/components/Cta";
 import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
+import { Pricing } from "@/components/Pricing";
+import { Process } from "@/components/Process";
+import { Services } from "@/components/Services";
 import { WhyUs } from "@/components/Whyus";
+import { useMobile } from "@/hooks/use-mobile";
 
 export default function Home() {
   const isMobile = useMobile();
@@ -24,7 +23,7 @@ export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const processRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const pricingRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
-  const contactRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  // const contactRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const whyUsRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
 
   useEffect(() => {
@@ -33,7 +32,7 @@ export default function Home() {
       { ref: servicesRef, id: "services" },
       { ref: processRef, id: "process" },
       { ref: pricingRef, id: "pricing" },
-      { ref: contactRef, id: "contact" },
+      // { ref: contactRef, id: "contact" },
       { ref: whyUsRef, id: "whyus" },
     ];
 
@@ -86,7 +85,7 @@ export default function Home() {
           servicesRef,
           processRef,
           pricingRef,
-          contactRef,
+          // contactRef,
           whyUsRef,
         }}
       />
@@ -103,7 +102,7 @@ export default function Home() {
       <Pricing ref={pricingRef} enterLink={enterLink} leaveLink={leaveLink} enterButton={enterButton} />
       {/* CTA Section */}
       <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
-      <Cta enterButton={enterButton} leaveLink={leaveLink} ref={contactRef} />
+      {/* <Cta enterButton={enterButton} leaveLink={leaveLink} ref={contactRef} /> */}
       {/* Contact Section */}
       {/* <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} /> */}
 
