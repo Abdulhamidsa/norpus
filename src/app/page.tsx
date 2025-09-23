@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
-// import { Cta } from "@/components/Cta";
+import { Cta } from "@/components/Cta";
 import CustomCursor from "@/components/custom-cursor";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -23,7 +23,7 @@ export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const processRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const pricingRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
-  // const contactRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const ctaRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const whyUsRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
 
   useEffect(() => {
@@ -32,8 +32,8 @@ export default function Home() {
       { ref: servicesRef, id: "services" },
       { ref: processRef, id: "process" },
       { ref: pricingRef, id: "pricing" },
-      // { ref: contactRef, id: "contact" },
       { ref: whyUsRef, id: "whyus" },
+      { ref: ctaRef, id: "cta" },
     ];
 
     const observer = new IntersectionObserver(
@@ -60,7 +60,14 @@ export default function Home() {
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      const navbarHeight = 80; // Approximate navbar height
+      const elementPosition = ref.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
       setMenuOpen(false);
     }
   };
@@ -85,8 +92,8 @@ export default function Home() {
           servicesRef,
           processRef,
           pricingRef,
-          // contactRef,
           whyUsRef,
+          ctaRef,
         }}
       />
 
@@ -100,9 +107,10 @@ export default function Home() {
       {/* <Clients /> */}
       {/* Pricing Section */}
       <Pricing ref={pricingRef} enterLink={enterLink} leaveLink={leaveLink} enterButton={enterButton} />
-      {/* CTA Section */}
+      {/* Why Us Section */}
       <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
-      {/* <Cta enterButton={enterButton} leaveLink={leaveLink} ref={contactRef} /> */}
+      {/* CTA Section */}
+      <Cta enterButton={enterButton} leaveLink={leaveLink} ref={ctaRef} />
       {/* Contact Section */}
       {/* <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} /> */}
 

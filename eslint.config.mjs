@@ -6,11 +6,11 @@ import importPlugin from "eslint-plugin-import";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 import js from "@eslint/js";
+import prettierPlugin from "eslint-plugin-prettier";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Set up compatibility layer for importing configs from the legacy format
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: {
@@ -18,23 +18,10 @@ const compat = new FlatCompat({
   },
 });
 
-// Optimized config for Next.js + TypeScript project
 const eslintConfig = [
-  // Global settings
+  // Global ignores
   {
-    ignores: [
-      "**/node_modules/**",
-      ".next/**",
-      "next-env.d.ts",
-      "out/**",
-      "dist/**",
-      "**/.git/**",
-      "**/.github/**",
-      "**/.vscode/**",
-      "**/*.min.js",
-      "**/build/**",
-      "eslintCheck.js", // Ignoring this utility file
-    ],
+    ignores: ["**/node_modules/**", ".next/**", "next-env.d.ts", "out/**", "dist/**", "**/.git/**", "**/.github/**", "**/.vscode/**", "**/*.min.js", "**/build/**", "eslintCheck.js"],
   },
 
   // Plugin setup
@@ -42,13 +29,14 @@ const eslintConfig = [
     plugins: {
       "unused-imports": unusedImports,
       import: importPlugin,
+      prettier: prettierPlugin,
     },
   },
 
-  // Extend Next.js configs
+  // Extend Next.js defaults
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
-  // Base JavaScript files
+  // Base JS
   {
     files: ["**/*.js", "**/*.jsx", "**/*.mjs"],
     ...js.configs.recommended,
@@ -56,21 +44,16 @@ const eslintConfig = [
       ecmaVersion: "latest",
       sourceType: "module",
       parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
+        ecmaFeatures: { jsx: true },
       },
       globals: {
         React: "readonly",
         JSX: "readonly",
       },
     },
-    linterOptions: {
-      reportUnusedDisableDirectives: "error",
-    },
   },
 
-  // TypeScript/React files
+  // TS + React
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
@@ -78,9 +61,7 @@ const eslintConfig = [
       sourceType: "module",
       parser: typescriptParser,
       parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
+        ecmaFeatures: { jsx: true },
         project: "./tsconfig.json",
       },
       globals: {
@@ -91,18 +72,13 @@ const eslintConfig = [
     plugins: {
       "@typescript-eslint": typescriptEslint,
     },
-    linterOptions: {
-      reportUnusedDisableDirectives: "error",
-    },
-
-    // Common rules for all JavaScript and TypeScript files
     rules: {
-      // Base rules
+      // General
       "no-console": ["warn", { allow: ["warn", "error", "info"] }],
       "prefer-const": "error",
-      "no-unused-vars": "off", // Turn off the base rule
 
-      // Import/export rules
+      // Unused imports/vars
+      "no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
         "error",
@@ -113,6 +89,18 @@ const eslintConfig = [
           argsIgnorePattern: "^_",
         },
       ],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
+
+      // Imports
       "import/order": [
         "error",
         {
@@ -128,51 +116,14 @@ const eslintConfig = [
         },
       ],
 
-      // React specific rules
-      "react/react-in-jsx-scope": "off", // Next.js doesn't need React imported
-      "react/prop-types": "off", // Use TypeScript for prop validation
-      "react/display-name": "off", // forwardRef components don't always need display names
-
-      // Next.js specific rules
-      "jsx-a11y/anchor-is-valid": [
-        "error",
-        {
-          components: ["Link"],
-          specialLink: ["hrefLeft", "hrefRight"],
-          aspects: ["invalidHref", "preferButton"],
-        },
-      ],
-    },
-  },
-
-  // TypeScript-specific rules
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    rules: {
-      // TypeScript specific rules
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          vars: "all",
-          varsIgnorePattern: "^_", // Variables starting with underscore are ignored
-          args: "after-used",
-          argsIgnorePattern: "^_", // Arguments starting with underscore are ignored
-          ignoreRestSiblings: true,
-          caughtErrors: "all",
-        },
-      ],
+      // TS-specific
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/explicit-module-boundary-types": "off", // Next.js doesn't require this
+      "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-non-null-assertion": "warn",
+      "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports", disallowTypeAnnotations: false }],
 
-      // Type imports handling
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        {
-          prefer: "type-imports",
-          disallowTypeAnnotations: false,
-        },
-      ],
+      // Prettier integration (formatting consistency)
+      "prettier/prettier": "error",
     },
   },
 ];

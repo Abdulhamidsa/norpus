@@ -15,8 +15,6 @@ export default function AnimatedBackground() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const mousePosition = { x: 0, y: 0 };
-    const mouseRadius = 100;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -32,77 +30,34 @@ export default function AnimatedBackground() {
       speedX: number;
       speedY: number;
       color: string;
-      originalX: number;
-      originalY: number;
-      vx = 0;
-      vy = 0;
-      friction = 0.95;
-      springFactor = 0.05;
       pulseSpeed: number;
       pulsePhase: number;
-      // parallaxFactor: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.originalX = this.x;
-        this.originalY = this.y;
-        this.baseSize = Math.random() * 1.2 + 0.7;
+        this.baseSize = Math.random() * 0.8 + 0.5; // Smaller particles
         this.size = this.baseSize;
-        this.speedX = (Math.random() - 0.5) * 0.11;
-        this.speedY = (Math.random() - 0.5) * 0.11;
-        this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.2})`;
-        this.pulseSpeed = Math.random() * 0.8 + 0.4;
+        this.speedX = (Math.random() - 0.5) * 0.3; // Much slower movement
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.color = `rgba(255, 255, 255, ${Math.random() * 0.4 + 0.1})`;
+        this.pulseSpeed = Math.random() * 0.5 + 0.2; // Slower pulse
         this.pulsePhase = Math.random() * Math.PI * 2;
-        // this.parallaxFactor = Math.random() * 0.5 + 0.7;
       }
 
       update(time: number) {
-        // No parallax effect
+        // Very gentle movement
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-        // Mouse interaction
-        const dx = mousePosition.x - this.x;
-        const dy = mousePosition.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        // Simple edge wrapping
+        if (this.x > canvas!.width) this.x = 0;
+        else if (this.x < 0) this.x = canvas!.width;
+        if (this.y > canvas!.height) this.y = 0;
+        else if (this.y < 0) this.y = canvas!.height;
 
-        if (distance < mouseRadius) {
-          const force = (mouseRadius - distance) / mouseRadius;
-          const angle = Math.atan2(dy, dx);
-          const pushX = Math.cos(angle) * force * 5;
-          const pushY = Math.sin(angle) * force * 5;
-
-          this.vx -= pushX;
-          this.vy -= pushY;
-        }
-
-        // Spring back to original position
-        const dx2 = this.originalX - this.x;
-        const dy2 = this.originalY - this.y;
-
-        this.vx += dx2 * this.springFactor;
-        this.vy += dy2 * this.springFactor;
-
-        // Apply friction
-        this.vx *= this.friction;
-        this.vy *= this.friction;
-
-        // Update position
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Slow drift
-        this.originalX += this.speedX;
-        this.originalY += this.speedY;
-
-        // Wrap around edges
-        if (this.originalX > canvas!.width) this.originalX = 0;
-        else if (this.originalX < 0) this.originalX = canvas!.width;
-
-        if (this.originalY > canvas!.height) this.originalY = 0;
-        else if (this.originalY < 0) this.originalY = canvas!.height;
-
-        // Pulse animation (smaller amplitude)
-        this.size = this.baseSize + Math.sin(time * this.pulseSpeed + this.pulsePhase) * 0.13;
+        // Gentle pulse animation
+        this.size = this.baseSize + Math.sin(time * this.pulseSpeed + this.pulsePhase) * 0.1;
       }
 
       draw() {
@@ -112,7 +67,7 @@ export default function AnimatedBackground() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.shadowColor = this.color;
-        ctx.shadowBlur = 6;
+        ctx.shadowBlur = 3; // Reduced shadow
         ctx.fill();
         ctx.restore();
       }
@@ -120,64 +75,67 @@ export default function AnimatedBackground() {
 
     function initParticles() {
       particles = [];
-      // Fewer particles for a calmer effect
-      const particleCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 14000), 70);
+      // Fewer particles for better performance
+      const particleCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 20000), 40);
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
     }
 
     function connectParticles() {
-      const maxDistance = 140;
+      const maxDistance = 120; // Reduced connection distance
+      const maxConnections = 3; // Limit connections per particle
+      
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
+        let connections = 0;
+        for (let j = i + 1; j < particles.length && connections < maxConnections; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
+          
           if (distance < maxDistance) {
-            const opacity = 1 - distance / maxDistance;
+            const opacity = (1 - distance / maxDistance) * 0.15; // More subtle lines
             ctx!.save();
-            ctx!.strokeStyle = `rgba(255,255,255,${opacity * 0.08})`;
-            ctx!.lineWidth = 0.7;
-            // Draw a quadratic curve for a more organic look
+            ctx!.strokeStyle = `rgba(255,255,255,${opacity})`;
+            ctx!.lineWidth = 0.5;
             ctx!.beginPath();
-            const midX = (particles[i].x + particles[j].x) / 2 + (dx + dy) * 0.04;
-            const midY = (particles[i].y + particles[j].y) / 2 - (dx - dy) * 0.04;
             ctx!.moveTo(particles[i].x, particles[i].y);
-            ctx!.quadraticCurveTo(midX, midY, particles[j].x, particles[j].y);
+            ctx!.lineTo(particles[j].x, particles[j].y); // Simple lines instead of curves
             ctx!.stroke();
             ctx!.restore();
+            connections++;
           }
         }
       }
     }
 
-    function handleMouseMove(e: MouseEvent) {
-      mousePosition.x = e.clientX;
-      mousePosition.y = e.clientY;
-    }
+    let lastTime = 0;
+    const targetFPS = 30; // Lower FPS for better performance
+    const frameInterval = 1000 / targetFPS;
 
-    function animate() {
-      if (!canvas) return;
-      ctx!.clearRect(0, 0, canvas.width, canvas.height);
-      const now = performance.now() / 1000;
-      for (const particle of particles) {
-        particle.update(now);
-        particle.draw();
+    function animate(currentTime: number) {
+      if (currentTime - lastTime >= frameInterval) {
+        if (!canvas) return;
+        ctx!.clearRect(0, 0, canvas.width, canvas.height);
+        const now = performance.now() / 1000;
+        
+        for (const particle of particles) {
+          particle.update(now);
+          particle.draw();
+        }
+        connectParticles();
+        lastTime = currentTime;
       }
-      connectParticles();
       animationFrameId = requestAnimationFrame(animate);
     }
 
     resizeCanvas();
-    animate();
+    animate(0);
 
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -187,27 +145,28 @@ export default function AnimatedBackground() {
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80 z-0"></div>
       <div className="absolute inset-0 z-0">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-3xl"
+          className="absolute top-1/4 left-1/4 w-80 h-80 bg-primary/8 rounded-full filter blur-3xl"
           animate={{
-            x: [0, 30, 0, -30, 0],
-            y: [0, -30, 0, 30, 0],
+            scale: [1, 1.05, 1],
+            opacity: [0.3, 0.4, 0.3],
           }}
           transition={{
-            duration: 20,
-            repeat: Number.POSITIVE_INFINITY,
+            duration: 12,
+            repeat: Infinity,
             ease: "easeInOut",
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full filter blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/6 rounded-full filter blur-2xl"
           animate={{
-            x: [0, -30, 0, 30, 0],
-            y: [0, 30, 0, -30, 0],
+            scale: [1, 1.08, 1],
+            opacity: [0.2, 0.35, 0.2],
           }}
           transition={{
             duration: 15,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             ease: "easeInOut",
+            delay: 3,
           }}
         />
       </div>

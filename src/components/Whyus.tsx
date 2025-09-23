@@ -113,7 +113,7 @@ export const WhyUs = forwardRef<HTMLDivElement, Props>(({ enterLink, leaveLink }
   ];
 
   return (
-    <section ref={ref} onMouseEnter={enterLink} onMouseLeave={leaveLink} className="py-16 bg-background">
+    <section ref={ref} onMouseEnter={enterLink} onMouseLeave={leaveLink} className="min-h-screen flex flex-col justify-center py-16 pt-10 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12">

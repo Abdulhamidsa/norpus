@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 
+import { SectionHeading } from "./ui/section-heading";
+
 type ProcessProps = {
   leaveLink?: () => void;
   enterButton: () => void;
@@ -14,7 +16,7 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
   return (
     <>
       {/* CTA Section */}
-      <section ref={ref} className="py-20 relative">
+      <section ref={ref} className="min-h-screen flex flex-col justify-center py-20 pt-10 relative">
         {/* Subtle background accent */}
         <div className="absolute inset-0 bg-gradient-to-b from-background to-accent/5 pointer-events-none"></div>
 

@@ -18,6 +18,7 @@ const translations = {
     "nav.pricing": "Pricing",
     "nav.contact": "Contact",
     "nav.whyus": "Why Us?",
+    "nav.cta": "Get Started",
 
     "hero.title.start": "We Build",
     "hero.title.highlight": "Digital",
@@ -206,6 +207,7 @@ const translations = {
     "nav.pricing": "Priser",
     "nav.contact": "Kontakt",
     "nav.whyus": "Hvorfor Os?",
+    "nav.cta": "Kom i Gang",
 
     "hero.title.start": "Vi Skaber",
     "hero.title.highlight": "Digitale",

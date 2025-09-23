@@ -141,10 +141,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
   button {
     @apply cursor-pointer;
+  }
+
+  /* Ensure minimum viewport height for sections */
+  .min-h-screen {
+    min-height: 100dvh;
   }
 }

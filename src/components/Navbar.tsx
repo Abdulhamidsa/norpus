@@ -23,7 +23,7 @@ type NavbarProps = {
     processRef: React.RefObject<HTMLDivElement>;
     pricingRef: React.RefObject<HTMLDivElement>;
     whyUsRef: React.RefObject<HTMLDivElement>;
-    // contactRef: React.RefObject<HTMLDivElement>;
+    ctaRef: React.RefObject<HTMLDivElement>;
   };
 };
 const navKeys = [
@@ -32,7 +32,6 @@ const navKeys = [
   { key: "process", ref: "processRef" },
   { key: "pricing", ref: "pricingRef" },
   { key: "whyus", ref: "whyUsRef" },
-  // { key: "contact", ref: "contactRef" },
 ];
 
 export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveLink, refs }: NavbarProps) {
@@ -141,6 +140,18 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             >
               {t("nav.whyus")}
             </NavLink>
+            <NavLink
+              active={activeSection === "cta"}
+              onClick={() => {
+                scrollTo(refs.ctaRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+              className="bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-md hover:bg-primary/20 transition-all duration-200"
+            >
+              {t("nav.cta")}
+            </NavLink>
             {/* <NavLink
               active={activeSection === "contact"}
               onClick={() => {
@@ -167,26 +178,52 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed top-[72px] left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/30 overflow-hidden shadow-lg"
           >
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.05, staggerChildren: 0.07 }} className="container mx-auto px-4 py-6 flex flex-col divide-y divide-border/10">
-              {navKeys.map(({ key, ref }, index) => (
-                <motion.div key={key} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 + index * 0.05 }} className={cn("py-4 first:pt-2 last:pb-2", "flex items-center justify-between")}>
-                  <button
-                    className={cn("text-base font-medium w-full text-left flex items-center", activeSection === key ? "text-primary" : "text-muted-foreground")}
-                    onClick={() => {
-                      scrollTo(refs[ref as keyof typeof refs]);
-                      setMenuOpen(false); // Close the menu when clicking a link
-                    }}
-                  >
-                    <span className="relative">
-                      {t(`nav.${key}`)}
-                      {activeSection === key && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary" />}
-                    </span>
-                  </button>
-                  <motion.div animate={{ rotate: activeSection === key ? 45 : 0 }} className={cn("w-6 h-6 rounded-full flex items-center justify-center", activeSection === key ? "text-primary" : "text-muted-foreground/50")}>
-                    {activeSection === key ? <span className="text-xs font-medium">→</span> : null}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.05, staggerChildren: 0.07 }} className="container mx-auto px-4 py-6 flex flex-col">
+              {/* Navigation Items */}
+              <div className="flex flex-col divide-y divide-border/10">
+                {navKeys.map(({ key, ref }, index) => (
+                  <motion.div key={key} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 + index * 0.05 }} className={cn("py-4 first:pt-2 last:pb-2", "flex items-center justify-between")}>
+                    <button
+                      className={cn("text-base font-medium text-left flex items-center transition-colors duration-200 w-fit", activeSection === key ? "text-primary" : "text-muted-foreground hover:text-foreground")}
+                      onClick={() => {
+                        scrollTo(refs[ref as keyof typeof refs]);
+                        setMenuOpen(false); // Close the menu when clicking a link
+                      }}
+                    >
+                      <span className="relative">
+                        {t(`nav.${key}`)}
+                        {activeSection === key && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary" />}
+                      </span>
+                    </button>
+                    <motion.div
+                      animate={{ rotate: activeSection === key ? 45 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      className={cn("w-6 h-6 rounded-full flex items-center justify-center transition-colors duration-200", activeSection === key ? "text-primary" : "text-muted-foreground/50")}
+                    >
+                      {activeSection === key ? (
+                        <span className="text-xs font-medium">→</span>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path d="M9 5l7 7-7 7" />
+                        </svg>
+                      )}
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
+
+              {/* CTA Button - Separate from nav items */}
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.4 }} className="mt-6 pt-4 border-t border-border/10">
+                <button
+                  className="w-full bg-primary text-primary-foreground px-4 py-3 rounded-md hover:opacity-90 transition-all duration-200 font-medium text-center"
+                  onClick={() => {
+                    scrollTo(refs.ctaRef);
+                    setMenuOpen(false);
+                  }}
+                >
+                  {t("nav.cta")}
+                </button>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
@@ -195,11 +232,11 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
   );
 }
 
-function NavLink({ children, active = false, onClick, onMouseEnter, onMouseLeave }: { children: React.ReactNode; active?: boolean; onClick?: () => void; onMouseEnter?: () => void; onMouseLeave?: () => void }) {
+function NavLink({ children, active = false, onClick, onMouseEnter, onMouseLeave, className }: { children: React.ReactNode; active?: boolean; onClick?: () => void; onMouseEnter?: () => void; onMouseLeave?: () => void; className?: string }) {
   return (
-    <motion.button onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={cn("relative text-sm font-medium transition-colors hover:text-foreground cursor-pointer", active ? "text-foreground" : "text-muted-foreground")}>
+    <motion.button onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={cn("relative text-sm font-medium transition-colors hover:text-foreground cursor-pointer", active ? "text-foreground" : "text-muted-foreground", className)}>
       {children}
-      {active && <motion.div layoutId="activeNavIndicator" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />}
+      {active && !className && <motion.div layoutId="activeNavIndicator" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />}
     </motion.button>
   );
 }
