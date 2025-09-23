@@ -23,7 +23,7 @@ export const Pricing = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background pointer-events-none"></div>
       <div className="absolute w-[600px] h-[600px] -top-[300px] -left-[300px] bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute w-[500px] h-[500px] -bottom-[250px] -right-[250px] bg-secondary/5 rounded-full blur-3xl"></div>
-      
+
       <div className="container mx-auto px-4 relative">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
           <SectionHeading>{t("pricing.title")}</SectionHeading>

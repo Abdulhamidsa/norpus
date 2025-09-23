@@ -85,14 +85,14 @@ export default function AnimatedBackground() {
     function connectParticles() {
       const maxDistance = 120; // Reduced connection distance
       const maxConnections = 3; // Limit connections per particle
-      
+
       for (let i = 0; i < particles.length; i++) {
         let connections = 0;
         for (let j = i + 1; j < particles.length && connections < maxConnections; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
+
           if (distance < maxDistance) {
             const opacity = (1 - distance / maxDistance) * 0.15; // More subtle lines
             ctx!.save();
@@ -118,7 +118,7 @@ export default function AnimatedBackground() {
         if (!canvas) return;
         ctx!.clearRect(0, 0, canvas.width, canvas.height);
         const now = performance.now() / 1000;
-        
+
         for (const particle of particles) {
           particle.update(now);
           particle.draw();
