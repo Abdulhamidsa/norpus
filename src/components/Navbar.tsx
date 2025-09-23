@@ -18,6 +18,7 @@ type NavbarProps = {
   leaveLink: () => void;
   refs: {
     heroRef: React.RefObject<HTMLDivElement>;
+    aboutRef: React.RefObject<HTMLDivElement>;
     servicesRef: React.RefObject<HTMLDivElement>;
     processRef: React.RefObject<HTMLDivElement>;
     pricingRef: React.RefObject<HTMLDivElement>;
@@ -26,18 +27,13 @@ type NavbarProps = {
   };
 };
 
-const navKeys = [
-  { key: "home", ref: "heroRef" },
-  { key: "services", ref: "servicesRef" },
-  { key: "process", ref: "processRef" },
-  { key: "pricing", ref: "pricingRef" },
-  { key: "whyus", ref: "whyUsRef" },
-];
-
 export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveLink, refs }: NavbarProps) {
   const isMobile = useMobile();
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useTranslation();
+
+  // Debug log to see current active section
+  console.log("Current activeSection:", activeSection);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -61,7 +57,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="px-4 py-4 flex items-center justify-between w-full">
         {/* Logo */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex items-center gap-2">
           <Link
@@ -191,21 +187,78 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             </motion.button>
           </div>
         ) : (
-          <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="flex items-center gap-8">
-            {navKeys.map(({ key, ref }) => (
-              <NavLink
-                key={key}
-                active={activeSection === key}
-                onClick={() => {
-                  scrollTo(refs[ref as keyof typeof refs]);
-                  if (isMobile) setMenuOpen(false);
-                }}
-                onMouseEnter={enterLink}
-                onMouseLeave={leaveLink}
-              >
-                {t(`nav.${key}`)}
-              </NavLink>
-            ))}
+          <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="flex items-center gap-5">
+            <NavLink
+              active={activeSection === "home"}
+              onClick={() => {
+                scrollTo(refs.heroRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+            >
+              {t("nav.home")}
+            </NavLink>
+
+            <NavLink
+              active={activeSection === "about"}
+              onClick={() => {
+                scrollTo(refs.aboutRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+            >
+              {t("nav.about")}
+            </NavLink>
+
+            <NavLink
+              active={activeSection === "services"}
+              onClick={() => {
+                scrollTo(refs.servicesRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+            >
+              {t("nav.services")}
+            </NavLink>
+
+            <NavLink
+              active={activeSection === "process"}
+              onClick={() => {
+                scrollTo(refs.processRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+            >
+              {t("nav.process")}
+            </NavLink>
+
+            <NavLink
+              active={activeSection === "pricing"}
+              onClick={() => {
+                scrollTo(refs.pricingRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+            >
+              {t("nav.pricing")}
+            </NavLink>
+
+            <NavLink
+              active={activeSection === "whyus"}
+              onClick={() => {
+                scrollTo(refs.whyUsRef);
+                if (isMobile) setMenuOpen(false);
+              }}
+              onMouseEnter={enterLink}
+              onMouseLeave={leaveLink}
+            >
+              {t("nav.whyus")}
+            </NavLink>
 
             <LanguageToggle onMouseEnter={enterButton} onMouseLeave={leaveLink} />
 
@@ -237,25 +290,113 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.05 }} className="container mx-auto px-4 py-4 flex flex-col">
               {/* Navigation Items */}
               <div className="flex flex-col divide-y divide-border/10">
-                {navKeys.map(({ key, ref }, index) => (
-                  <motion.div key={key} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 + index * 0.05 }} className={cn("py-4 first:pt-2 last:pb-2")}>
-                    <button
-                      className={cn(
-                        "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
-                        activeSection === key ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
-                      )}
-                      onClick={() => {
-                        scrollTo(refs[ref as keyof typeof refs]);
-                        setMenuOpen(false);
-                      }}
-                    >
-                      <span className="relative pl-3">
-                        {t(`nav.${key}`)}
-                        {activeSection === key && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
-                      </span>
-                    </button>
-                  </motion.div>
-                ))}
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 }} className={cn("py-4 first:pt-2 last:pb-2")}>
+                  <button
+                    className={cn(
+                      "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
+                      activeSection === "home" ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => {
+                      scrollTo(refs.heroRef);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span className="relative pl-3">
+                      {t("nav.home")}
+                      {activeSection === "home" && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+                    </span>
+                  </button>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} className={cn("py-4 first:pt-2 last:pb-2")}>
+                  <button
+                    className={cn(
+                      "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
+                      activeSection === "about" ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => {
+                      scrollTo(refs.aboutRef);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span className="relative pl-3">
+                      {t("nav.about")}
+                      {activeSection === "about" && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+                    </span>
+                  </button>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.15 }} className={cn("py-4 first:pt-2 last:pb-2")}>
+                  <button
+                    className={cn(
+                      "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
+                      activeSection === "services" ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => {
+                      scrollTo(refs.servicesRef);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span className="relative pl-3">
+                      {t("nav.services")}
+                      {activeSection === "services" && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+                    </span>
+                  </button>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.2 }} className={cn("py-4 first:pt-2 last:pb-2")}>
+                  <button
+                    className={cn(
+                      "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
+                      activeSection === "process" ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => {
+                      scrollTo(refs.processRef);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span className="relative pl-3">
+                      {t("nav.process")}
+                      {activeSection === "process" && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+                    </span>
+                  </button>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.25 }} className={cn("py-4 first:pt-2 last:pb-2")}>
+                  <button
+                    className={cn(
+                      "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
+                      activeSection === "pricing" ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => {
+                      scrollTo(refs.pricingRef);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span className="relative pl-3">
+                      {t("nav.pricing")}
+                      {activeSection === "pricing" && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+                    </span>
+                  </button>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.3 }} className={cn("py-4 first:pt-2 last:pb-2")}>
+                  <button
+                    className={cn(
+                      "text-base font-medium text-left flex items-center transition-all duration-200 w-full py-3 px-2 rounded-sm hover:bg-background/50",
+                      activeSection === "whyus" ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] font-semibold bg-primary/5" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => {
+                      scrollTo(refs.whyUsRef);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span className="relative pl-3">
+                      {t("nav.whyus")}
+                      {activeSection === "whyus" && <motion.div layoutId="mobileActiveIndicator" className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+                    </span>
+                  </button>
+                </motion.div>
               </div>
 
               {/* Language Toggle */}
@@ -286,7 +427,7 @@ function NavLink({ children, active = false, onClick, onMouseEnter, onMouseLeave
       )}
     >
       {children}
-      {active && !className && <motion.div layoutId="activeNavIndicator" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_6px_rgba(59,130,246,0.5)]" />}
+      {active && !className && <motion.div layoutId="underline" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_6px_rgba(59,130,246,0.5)]" transition={{ type: "spring", stiffness: 300, damping: 30 }} />}
     </motion.button>
   );
 }

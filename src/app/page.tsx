@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
+import { About } from "@/components/About";
 import { Cta } from "@/components/Cta";
 import CustomCursor from "@/components/custom-cursor";
 import { Footer } from "@/components/Footer";
@@ -11,6 +12,7 @@ import { Pricing } from "@/components/Pricing";
 import { Process } from "@/components/Process";
 import { Services } from "@/components/Services";
 import { WhyUs } from "@/components/Whyus";
+import { SectionSeparator } from "@/components/ui/section-separator";
 import { useMobile } from "@/hooks/use-mobile";
 
 export default function Home() {
@@ -20,6 +22,7 @@ export default function Home() {
   const [, setCursorVariant] = useState("default");
 
   const heroRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const aboutRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const servicesRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const processRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const pricingRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
@@ -29,6 +32,7 @@ export default function Home() {
   useEffect(() => {
     const sectionMap = [
       { ref: heroRef, id: "home" },
+      { ref: aboutRef, id: "about" },
       { ref: servicesRef, id: "services" },
       { ref: processRef, id: "process" },
       { ref: pricingRef, id: "pricing" },
@@ -89,6 +93,7 @@ export default function Home() {
         leaveLink={leaveLink}
         refs={{
           heroRef,
+          aboutRef,
           servicesRef,
           processRef,
           pricingRef,
@@ -99,16 +104,35 @@ export default function Home() {
 
       <Hero ref={heroRef} enterButton={enterButton} />
 
+      <SectionSeparator variant="gradient" />
+
+      {/* About Section */}
+      <About ref={aboutRef} enterLink={enterLink} leaveLink={leaveLink} />
+
+      <SectionSeparator variant="gradient" />
+
       {/* Services Section */}
       <Services ref={servicesRef} enterButton={enterButton} />
+
+      <SectionSeparator variant="gradient" />
+
       {/* Process Section */}
       <Process ref={processRef} enterLink={enterLink} leaveLink={leaveLink} />
+
+      <SectionSeparator variant="gradient" />
+
       {/* Clients Section */}
       {/* <Clients /> */}
       {/* Pricing Section */}
       <Pricing ref={pricingRef} enterLink={enterLink} leaveLink={leaveLink} enterButton={enterButton} />
+
+      <SectionSeparator variant="gradient" />
+
       {/* Why Us Section */}
       <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
+
+      <SectionSeparator variant="gradient" />
+
       {/* CTA Section */}
       <Cta enterButton={enterButton} leaveLink={leaveLink} ref={ctaRef} />
       {/* Contact Section */}
