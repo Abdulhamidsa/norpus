@@ -29,7 +29,7 @@ const translations = {
 
     "about.title": "About Us",
     "about.subtitle": "Professional web development with modern technology and client-focused solutions.",
-    
+
     "about.story.title": "Our Approach",
     "about.story.paragraph1": "At Norpus, we specialize in building high-performance websites using cutting-edge technology stacks. As experienced developers, we understand the importance of both technical excellence and clear communication.",
     "about.story.paragraph2": "We believe in a collaborative approach where your vision guides our technical expertise. Every project begins with understanding your specific requirements and business objectives.",
@@ -38,7 +38,7 @@ const translations = {
     "about.mission.title": "Our Mission",
     "about.mission.description": "To deliver exceptional web solutions that combine cutting-edge technology with meticulous attention to client requirements. We focus on creating fast, scalable, and maintainable websites that drive business success.",
 
-    "about.vision.title": "Our Vision", 
+    "about.vision.title": "Our Vision",
     "about.vision.description": "To be recognized as the premier development partner for businesses seeking professional, modern web solutions built with technical excellence and genuine client collaboration.",
 
     "about.values.title": "Our Expertise",
@@ -47,14 +47,15 @@ const translations = {
     "about.values.modern.title": "Modern Technology",
     "about.values.modern.description": "We leverage the latest development frameworks and tools to build fast, secure, and scalable web applications.",
 
-    "about.values.professional.title": "Technical Excellence", 
+    "about.values.professional.title": "Technical Excellence",
     "about.values.professional.description": "Our development team brings deep technical expertise and industry best practices to every project.",
 
     "about.values.listening.title": "Client Collaboration",
     "about.values.listening.description": "We prioritize clear communication and ensure your requirements are understood and implemented precisely.",
 
     "about.values.goals.title": "Results-Driven",
-    "about.values.goals.description": "Every solution we develop is strategically designed to achieve your specific business goals and requirements.",    "stats.projects": "Projects Completed",
+    "about.values.goals.description": "Every solution we develop is strategically designed to achieve your specific business goals and requirements.",
+    "stats.projects": "Projects Completed",
     "stats.satisfaction": "Satisfaction Rate",
     "stats.clients": "Happy Clients",
     "stats.awards": "Industry Awards",
@@ -250,7 +251,7 @@ const translations = {
 
     "about.title": "Om Os",
     "about.subtitle": "Professionel webudvikling med moderne teknologi og klientfokuserede løsninger.",
-    
+
     "about.story.title": "Vores Tilgang",
     "about.story.paragraph1": "Hos Norpus specialiserer vi os i at bygge højtydende hjemmesider ved hjælp af banebrydende teknologier. Som erfarne udviklere forstår vi vigtigheden af både teknisk ekspertise og klar kommunikation.",
     "about.story.paragraph2": "Vi tror på en samarbejdende tilgang, hvor din vision styrer vores tekniske ekspertise. Ethvert projekt begynder med at forstå dine specifikke krav og forretningsmål.",
@@ -275,7 +276,8 @@ const translations = {
     "about.values.listening.description": "Vi prioriterer klar kommunikation og sikrer, at dine krav bliver forstået og implementeret præcist.",
 
     "about.values.goals.title": "Resultatorienteret",
-    "about.values.goals.description": "Hver løsning vi udvikler er strategisk designet til at opnå dine specifikke forretningsmål og krav.",    "stats.projects": "Gennemførte Projekter",
+    "about.values.goals.description": "Hver løsning vi udvikler er strategisk designet til at opnå dine specifikke forretningsmål og krav.",
+    "stats.projects": "Gennemførte Projekter",
     "stats.satisfaction": "Tilfredshedsrate",
     "stats.clients": "Tilfredse Kunder",
     "stats.awards": "Branchepriser",

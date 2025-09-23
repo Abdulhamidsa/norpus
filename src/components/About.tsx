@@ -63,26 +63,20 @@ export const About = forwardRef<HTMLDivElement, AboutProps>(({ enterLink, leaveL
                 <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl bg-gradient-to-br from-background/90 to-background/60 backdrop-blur-xl border border-border/20 shadow-2xl shadow-primary/5 flex items-center justify-center overflow-hidden">
                   {/* Subtle gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-secondary/[0.02]"></div>
-                  
+
                   {/* Logo */}
                   <div className="relative w-40 h-40 md:w-48 md:h-48 z-10">
-                    <Image
-                      src="/logo.png"
-                      alt="Norpus Logo"
-                      fill
-                      className="object-contain filter drop-shadow-lg"
-                      priority
-                    />
+                    <Image src="/logo.png" alt="Norpus Logo" fill className="object-contain filter drop-shadow-lg" priority />
                   </div>
-                  
+
                   {/* Subtle border glow */}
                   <div className="absolute inset-0 rounded-3xl border border-primary/10 group-hover:border-primary/20 transition-all duration-500"></div>
                 </div>
-                
+
                 {/* Floating decorative elements */}
                 <div className="absolute -top-6 -right-6 w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 backdrop-blur-sm border border-primary/20 animate-pulse"></div>
                 <div className="absolute -bottom-6 -left-6 w-8 h-8 rounded-xl bg-gradient-to-br from-secondary/20 to-secondary/10 backdrop-blur-sm border border-secondary/20 animate-pulse" style={{ animationDelay: "1s" }}></div>
-                
+
                 {/* Background glow effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-secondary/5 blur-2xl scale-110 opacity-50 group-hover:opacity-75 transition-opacity duration-500 -z-10"></div>
               </div>
