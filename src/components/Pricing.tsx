@@ -63,7 +63,7 @@ export const Pricing = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
           </div>
 
           {/* Contact info */}
-          <div className="mt-10 text-center text-sm text-muted-foreground">
+          {/* <div className="mt-10 text-center text-sm text-muted-foreground">
             <p>
               Need a custom solution?{" "}
               <a href="#contact" className="text-primary hover:underline">
@@ -71,7 +71,7 @@ export const Pricing = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
               </a>{" "}
               for enterprise pricing.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
