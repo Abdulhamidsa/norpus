@@ -84,14 +84,14 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.5 }} className="mb-8">
               <motion.div className="relative inline-block group">
                 {/* Subtle glowing border */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-20 group-hover:opacity-40 transition duration-300"></div>
 
                 {/* Clean button */}
                 <motion.a
                   href="https://form.norpus.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative inline-flex items-center gap-3 px-8 py-4 bg-background/80 backdrop-blur-sm border border-border/20 rounded-xl font-medium text-foreground hover:text-primary transition-all duration-300 group"
+                  className="relative inline-flex items-center gap-3 px-6 py-3 bg-background/80 backdrop-blur-sm border border-border/20 rounded-lg font-medium text-foreground hover:text-primary transition-all duration-300 group"
                   onMouseEnter={enterButton}
                   onMouseLeave={leaveLink}
                   whileHover={{ scale: 1.02 }}
@@ -109,20 +109,20 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
               </motion.div>
             </motion.div>
 
-            {/* Enhanced trust indicators with animation */}
+            {/* Enhanced trust indicators with clean design */}
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.6 }} className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
-              <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }}>
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <motion.div className="flex items-center gap-3" whileHover={{ scale: 1.02 }}>
+                <div className="w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
                 <span>{t("whyus.features.consultation")}</span>
               </motion.div>
-              <div className="hidden sm:block w-px h-4 bg-border"></div>
-              <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }}>
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <div className="hidden sm:block w-px h-4 bg-border/50"></div>
+              <motion.div className="flex items-center gap-3" whileHover={{ scale: 1.02 }}>
+                <div className="w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
                 <span>{t("whyus.features.obligations")}</span>
               </motion.div>
-              <div className="hidden sm:block w-px h-4 bg-border"></div>
-              <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }}>
-                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <div className="hidden sm:block w-px h-4 bg-border/50"></div>
+              <motion.div className="flex items-center gap-3" whileHover={{ scale: 1.02 }}>
+                <div className="w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
                 <span>{t("whyus.features.response")}</span>
               </motion.div>
             </motion.div>

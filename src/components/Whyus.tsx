@@ -81,15 +81,15 @@ function MobileSlider({ features, t }: { features: Feature[]; t: (key: string) =
       <div ref={scrollRef} className="flex md:grid md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-2 px-2 scrollbar-hide" style={{ scrollBehavior: "smooth" }}>
         {features.map((feature, index) => (
           <motion.div key={index} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative min-w-[85vw] max-w-xs md:min-w-0 md:max-w-none snap-center">
-            {/* Feature Item */}
-            <div className="flex flex-col md:flex-row items-start gap-4 p-5 rounded-lg border border-border/40 hover:border-primary/30 transition-colors duration-300 bg-background">
+            {/* Feature Item - Fixed height and width */}
+            <div className="flex flex-col md:flex-row items-start gap-4 p-5 rounded-lg border border-border/40 hover:border-primary/30 transition-colors duration-300 bg-background h-[220px] md:h-[160px] w-full">
               {/* Icon */}
               <div className="flex-shrink-0 w-10 h-10 rounded-md flex items-center justify-center text-primary mb-2 md:mb-0 border border-border/40">{feature.icon}</div>
 
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors duration-300">{t(`whyus.point.${feature.key}.title`)}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{t(`whyus.point.${feature.key}.description`)}</p>
+              {/* Content - with overflow handling */}
+              <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden">
+                <h3 className="text-base font-medium mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">{t(`whyus.point.${feature.key}.title`)}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1 line-clamp-5 md:line-clamp-4">{t(`whyus.point.${feature.key}.description`)}</p>
               </div>
             </div>
           </motion.div>

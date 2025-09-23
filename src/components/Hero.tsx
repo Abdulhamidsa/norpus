@@ -1,9 +1,7 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import AnimatedBackground from "./animated-background";
-import { Button } from "./ui/button";
 
 type HeroProps = {
   enterButton: () => void;
@@ -29,28 +27,9 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, leaveL
             {t("hero.title.end")}
           </motion.h1>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="text-xl md:text-2xl text-muted-foreground mb-20 max-w-2xl mx-auto">
             {t("hero.subtitle")}
           </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="group text-lg px-8 py-6 cursor-pointer bg-primary/10 text-primary border border-l-4 border-l-primary border-primary shadow-md hover:bg-white hover:text-black hover:shadow-lg transition-all duration-300"
-              onMouseEnter={enterButton}
-              onMouseLeave={leaveLink}
-              onClick={() => {
-                window.open("https://form.norpus.com/", "_blank");
-              }}
-            >
-              {/* Vertical accent border */}
-              {/* <span className="absolute -left-5 top-2 bottom-2 w-1 rounded-full bg-primary" /> */}
-              <span className="relative flex items-center">
-                {t("hero.cta")}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:text-primary group-hover:scale-110" />
-              </span>
-            </Button>
-          </motion.div>
         </motion.div>
         <motion.div className="absolute bottom-10 left-1/2 transform -translate-x-1/2" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }}>
           <motion.div

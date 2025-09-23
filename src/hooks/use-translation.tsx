@@ -20,10 +20,10 @@ const translations = {
     "nav.whyus": "Why Us?",
     "nav.cta": "Get Started",
 
-    "hero.title.start": "We Build",
-    "hero.title.highlight": "Digital",
-    "hero.title.end": "Experiences",
-    "hero.subtitle": "Transforming ideas into exceptional websites",
+    "hero.title.start": "Transforming",
+    "hero.title.highlight": "Your Vision",
+    "hero.title.end": "Into Reality",
+    "hero.subtitle": "Strategic digital solutions crafted to bring your unique ideas to life with precision and expertise.",
     "hero.cta": "Get Free Offer",
 
     "stats.projects": "Projects Completed",
@@ -213,10 +213,10 @@ const translations = {
     "nav.whyus": "Hvorfor Os?",
     "nav.cta": "Kom i Gang",
 
-    "hero.title.start": "Vi Skaber",
-    "hero.title.highlight": "Digitale",
-    "hero.title.end": "Oplevelser",
-    "hero.subtitle": "Vi transformerer idéer til exceptionelle hjemmesider",
+    "hero.title.start": "Omdanner",
+    "hero.title.highlight": "Din Vision",
+    "hero.title.end": "Til Virkelighed",
+    "hero.subtitle": "Strategiske digitale løsninger skabt for at bringe dine unikke idéer til live med præcision og ekspertise.",
     "hero.cta": "Få Gratis Tilbud",
 
     "stats.projects": "Gennemførte Projekter",
