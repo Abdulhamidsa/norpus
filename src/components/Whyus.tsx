@@ -123,7 +123,7 @@ export const WhyUs = forwardRef<HTMLDivElement, Props>(({ enterLink, leaveLink }
   ];
 
   return (
-    <section ref={ref} onMouseEnter={enterLink} onMouseLeave={leaveLink} className="py-16 pt-10 relative overflow-hidden bg-background">
+    <section ref={ref} onMouseEnter={enterLink} onMouseLeave={leaveLink} className="min-h-screen flex flex-col justify-start py-16 md:pt-16 relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background pointer-events-none"></div>
       <div className="absolute w-[500px] h-[500px] -top-[250px] -right-[250px] bg-primary/5 rounded-full blur-3xl"></div>

@@ -13,7 +13,7 @@ export const Process = forwardRef<HTMLDivElement, ProcessProps>(({ enterLink, le
   const { t } = useTranslation();
 
   return (
-    <section ref={ref} className="min-h-screen flex flex-col justify-center py-24 pt-10 relative overflow-hidden">
+    <section ref={ref} className="min-h-screen flex flex-col justify-start py-16 md:pt-16 relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background pointer-events-none"></div>
       <div className="absolute w-[500px] h-[500px] -top-64 -right-64 bg-primary/5 rounded-full blur-3xl"></div>

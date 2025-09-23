@@ -15,7 +15,7 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(({ enterButton, leaveL
   return (
     <>
       {/* Hero Section */}
-      <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={ref} className="relative min-h-screen h-[100dvh] flex items-center justify-center overflow-hidden">
         <AnimatedBackground />
 
         <motion.div className="container mx-auto px-4 py-20 relative z-10 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
