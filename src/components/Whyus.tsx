@@ -53,17 +53,27 @@ function MobileSlider({ features, t }: { features: Feature[]; t: (key: string) =
 
   return (
     <div className="relative">
-      {/* Simplified Chevrons */}
+      {/* Clean Navigation Buttons */}
       {canScrollLeft && (
-        <button type="button" className="absolute left-2 top-1/2 -translate-y-1/2 z-10 md:hidden bg-background rounded-md p-1 border border-border/40" onClick={() => scrollBy(-1)} aria-label="Scroll left">
-          <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <button
+          type="button"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 md:hidden bg-background/90 backdrop-blur-sm rounded-full p-2 border border-border/20 hover:border-primary/30 hover:bg-background text-muted-foreground hover:text-primary transition-colors duration-200"
+          onClick={() => scrollBy(-1)}
+          aria-label="Scroll left"
+        >
+          <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path d="M15 19l-7-7 7-7" />
           </svg>
         </button>
       )}
       {canScrollRight && (
-        <button type="button" className="absolute right-2 top-1/2 -translate-y-1/2 z-10 md:hidden bg-background rounded-md p-1 border border-border/40" onClick={() => scrollBy(1)} aria-label="Scroll right">
-          <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <button
+          type="button"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 md:hidden bg-background/90 backdrop-blur-sm rounded-full p-2 border border-border/20 hover:border-primary/30 hover:bg-background text-muted-foreground hover:text-primary transition-colors duration-200"
+          onClick={() => scrollBy(1)}
+          aria-label="Scroll right"
+        >
+          <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -113,8 +123,13 @@ export const WhyUs = forwardRef<HTMLDivElement, Props>(({ enterLink, leaveLink }
   ];
 
   return (
-    <section ref={ref} onMouseEnter={enterLink} onMouseLeave={leaveLink} className="min-h-screen flex flex-col justify-center py-16 pt-10 bg-background">
-      <div className="container mx-auto px-4">
+    <section ref={ref} onMouseEnter={enterLink} onMouseLeave={leaveLink} className="py-16 pt-10 relative overflow-hidden bg-background">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background pointer-events-none"></div>
+      <div className="absolute w-[500px] h-[500px] -top-[250px] -right-[250px] bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute w-[400px] h-[400px] -bottom-[200px] -left-[200px] bg-secondary/5 rounded-full blur-3xl"></div>
+
+      <div className="container mx-auto px-4 relative">
         {/* Header */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12">
           <SectionHeading>{t("whyus.title")}</SectionHeading>

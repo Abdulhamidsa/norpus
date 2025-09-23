@@ -105,8 +105,8 @@ const translations = {
     "pricing.enterprise.features.5": "12 months of priority support",
     "pricing.enterprise.cta": "Contact Us",
 
-    "cta.title": "Ready to Transform Your Digital Presence?",
-    "cta.subtitle": "Let's discuss how we can help your business grow with a custom digital solution.",
+    "cta.title": "Ready to Transform Your Business Digital Presence?",
+    "cta.subtitle": "Your vision, our expertise. Let's create a digital experience that makes an impact.",
     "cta.button": "Get Free Offer",
     "contact.title": "Get In Touch",
     "contact.subtitle": "Ready to start your next project? Contact us today for a free consultation",
@@ -167,6 +167,10 @@ const translations = {
 
     "whyus.point.3.title": "Free Consultations",
     "whyus.point.3.description": "We offer no-obligation strategy sessions to help you find the best digital solution for your business needs.",
+
+    "whyus.features.consultation": "Free consultation",
+    "whyus.features.obligations": "No obligations",
+    "whyus.features.response": "24h response",
 
     "whyus.point.4.title": "Flexible Collaboration",
     "whyus.point.4.description": "Work with us on your terms — we offer virtual meetings, flexible schedules, and clear communication throughout the project.",
@@ -294,8 +298,8 @@ const translations = {
     "pricing.enterprise.features.5": "12 måneders prioriteret support",
     "pricing.enterprise.cta": "Kontakt Os",
 
-    "cta.title": "Klar til at Transformere Din Digitale Tilstedeværelse?",
-    "cta.subtitle": "Lad os diskutere, hvordan vi kan hjælpe din virksomhed med at vokse med en skræddersyet digital løsning.",
+    "cta.title": "Klar til at Transformere Din Virksomheds Digitale Tilstedeværelse?",
+    "cta.subtitle": "Din vision, vores ekspertise. Lad os skabe en digital oplevelse, der gør en forskel.",
     "cta.button": "Få Gratis Tilbud",
     "contact.title": "Kontakt Os",
     "contact.subtitle": "Klar til at starte dit næste projekt? Kontakt os i dag for en gratis konsultation",
@@ -355,6 +359,10 @@ const translations = {
 
     "whyus.point.3.title": "Gratis Rådgivning",
     "whyus.point.3.description": "Få en gratis og uforpligtende samtale, hvor vi hjælper dig med at finde den rigtige digitale løsning til din virksomhed.",
+
+    "whyus.features.consultation": "Gratis rådgivning",
+    "whyus.features.obligations": "Ingen forpligtelser",
+    "whyus.features.response": "24t respons",
 
     "whyus.point.4.title": "Fleksibelt Samarbejde",
     "whyus.point.4.description": "Vi tilpasser os dig – online møder, fleksible arbejdstider og klar kommunikation hele vejen igennem.",

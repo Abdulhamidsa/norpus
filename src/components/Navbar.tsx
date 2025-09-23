@@ -198,7 +198,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
                     <motion.div
                       animate={{ rotate: activeSection === key ? 45 : 0 }}
                       transition={{ duration: 0.2 }}
-                      className={cn("w-6 h-6 rounded-full flex items-center justify-center transition-colors duration-200", activeSection === key ? "text-primary" : "text-muted-foreground/50")}
+                      className={cn("w-6 h-6 rounded-full flex items-center justify-center transition-colors duration-200 z-50", activeSection === key ? "text-primary" : "text-muted-foreground/50")}
                     >
                       {activeSection === key ? (
                         <span className="text-xs font-medium">→</span>
@@ -215,7 +215,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
               {/* CTA Button - Separate from nav items */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.4 }} className="mt-6 pt-4 border-t border-border/10">
                 <button
-                  className="w-full bg-primary text-primary-foreground px-4 py-3 rounded-md hover:opacity-90 transition-all duration-200 font-medium text-center"
+                  className="w-full bg-gradient-to-r from-primary to-primary/90 text-primary-foreground px-4 py-3 rounded-lg hover:from-primary/90 hover:to-primary transition-all duration-200 font-medium text-center shadow-sm"
                   onClick={() => {
                     scrollTo(refs.ctaRef);
                     setMenuOpen(false);
