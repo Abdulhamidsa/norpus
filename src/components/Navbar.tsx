@@ -57,7 +57,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
-      <div className="px-4 py-4 flex items-center justify-between w-full">
+      <div className="px-4 pl-10 pr-5 py-4 flex items-center justify-between w-full">
         {/* Logo */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex items-center gap-2">
           <Link
