@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense } from 'react';
-import { useGoogleAnalytics } from '@/hooks/use-google-analytics';
+import { Suspense } from "react";
+import { useGoogleAnalytics } from "@/hooks/use-google-analytics";
 
 function GoogleAnalyticsTracker() {
   useGoogleAnalytics();

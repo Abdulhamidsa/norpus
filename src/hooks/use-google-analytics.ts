@@ -11,7 +11,7 @@ export const useGoogleAnalytics = () => {
     // Create URL without search params to avoid Suspense issues
     const url = new URL(window.location.href);
     url.pathname = pathname;
-    
+
     pageview(url);
   }, [pathname]);
 };

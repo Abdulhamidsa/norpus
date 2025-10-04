@@ -87,61 +87,61 @@ export default function Home() {
         {!isMobile && <CustomCursor />}
         {/* Navigation */}
 
-      <Navbar
-        scrollTo={scrollTo}
-        activeSection={activeSection}
-        enterButton={enterButton}
-        enterLink={enterLink}
-        leaveLink={leaveLink}
-        refs={{
-          heroRef,
-          aboutRef,
-          servicesRef,
-          processRef,
-          pricingRef,
-          whyUsRef,
-          ctaRef,
-        }}
-      />
+        <Navbar
+          scrollTo={scrollTo}
+          activeSection={activeSection}
+          enterButton={enterButton}
+          enterLink={enterLink}
+          leaveLink={leaveLink}
+          refs={{
+            heroRef,
+            aboutRef,
+            servicesRef,
+            processRef,
+            pricingRef,
+            whyUsRef,
+            ctaRef,
+          }}
+        />
 
-      <Hero ref={heroRef} enterButton={enterButton} />
+        <Hero ref={heroRef} enterButton={enterButton} />
 
-      <SectionSeparator variant="gradient" />
+        <SectionSeparator variant="gradient" />
 
-      {/* About Section */}
-      <About ref={aboutRef} enterLink={enterLink} leaveLink={leaveLink} />
+        {/* About Section */}
+        <About ref={aboutRef} enterLink={enterLink} leaveLink={leaveLink} />
 
-      <SectionSeparator variant="gradient" />
+        <SectionSeparator variant="gradient" />
 
-      {/* Services Section */}
-      <Services ref={servicesRef} enterButton={enterButton} />
+        {/* Services Section */}
+        <Services ref={servicesRef} enterButton={enterButton} />
 
-      <SectionSeparator variant="gradient" />
+        <SectionSeparator variant="gradient" />
 
-      {/* Process Section */}
-      <Process ref={processRef} enterLink={enterLink} leaveLink={leaveLink} />
+        {/* Process Section */}
+        <Process ref={processRef} enterLink={enterLink} leaveLink={leaveLink} />
 
-      <SectionSeparator variant="gradient" />
+        <SectionSeparator variant="gradient" />
 
-      {/* Clients Section */}
-      {/* <Clients /> */}
-      {/* Pricing Section */}
-      <Pricing ref={pricingRef} enterLink={enterLink} leaveLink={leaveLink} enterButton={enterButton} />
+        {/* Clients Section */}
+        {/* <Clients /> */}
+        {/* Pricing Section */}
+        <Pricing ref={pricingRef} enterLink={enterLink} leaveLink={leaveLink} enterButton={enterButton} />
 
-      <SectionSeparator variant="gradient" />
+        <SectionSeparator variant="gradient" />
 
-      {/* Why Us Section */}
-      <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
+        {/* Why Us Section */}
+        <WhyUs ref={whyUsRef} enterLink={enterLink} leaveLink={leaveLink} />
 
-      <SectionSeparator variant="gradient" />
+        <SectionSeparator variant="gradient" />
 
-      {/* CTA Section */}
-      <Cta enterButton={enterButton} leaveLink={leaveLink} ref={ctaRef} />
-      {/* Contact Section */}
-      {/* <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} /> */}
+        {/* CTA Section */}
+        <Cta enterButton={enterButton} leaveLink={leaveLink} ref={ctaRef} />
+        {/* Contact Section */}
+        {/* <Contact ref={contactRef} enterButton={enterButton} leaveLink={leaveLink} /> */}
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <Footer />
       </div>
     </GoogleAnalyticsProvider>
   );
