@@ -1,5 +1,5 @@
 // Google Analytics configuration
-export const GA_TRACKING_ID = "G-RRGY2M4NVX";
+export const GA_TRACKING_ID = "G-3V4X9ZRXM1";
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: URL) => {
