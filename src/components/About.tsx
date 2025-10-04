@@ -94,7 +94,7 @@ export const About = forwardRef<HTMLDivElement, AboutProps>(({ enterLink, leaveL
           </div>
 
           {/* Mission & Vision */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -130,15 +130,15 @@ export const About = forwardRef<HTMLDivElement, AboutProps>(({ enterLink, leaveL
               </div>
               <p className="text-muted-foreground leading-relaxed">{t("about.vision.description")}</p>
             </motion.div>
-          </div>
+          </div> */}
 
           {/* Values Section */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
+          {/* <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-semibold mb-4">{t("about.values.title")}</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">{t("about.values.subtitle")}</p>
-          </motion.div>
+          </motion.div> */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -157,7 +157,7 @@ export const About = forwardRef<HTMLDivElement, AboutProps>(({ enterLink, leaveL
                 <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
