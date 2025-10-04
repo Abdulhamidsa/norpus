@@ -14,11 +14,9 @@ import { Services } from "@/components/Services";
 import { WhyUs } from "@/components/Whyus";
 import { SectionSeparator } from "@/components/ui/section-separator";
 import { useMobile } from "@/hooks/use-mobile";
-import { useGoogleAnalytics } from "@/hooks/use-google-analytics";
+import { GoogleAnalyticsProvider } from "@/components/GoogleAnalyticsProvider";
 
 export default function Home() {
-  // Google Analytics tracking
-  useGoogleAnalytics();
   const isMobile = useMobile();
   const [, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -84,9 +82,10 @@ export default function Home() {
   const leaveLink = () => setCursorVariant("default");
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      {!isMobile && <CustomCursor />}
-      {/* Navigation */}
+    <GoogleAnalyticsProvider>
+      <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
+        {!isMobile && <CustomCursor />}
+        {/* Navigation */}
 
       <Navbar
         scrollTo={scrollTo}
@@ -143,6 +142,7 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </div>
+      </div>
+    </GoogleAnalyticsProvider>
   );
 }
