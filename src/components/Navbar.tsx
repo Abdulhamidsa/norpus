@@ -9,6 +9,7 @@ import { LanguageToggle } from "@/components/language-toggle";
 import { useMobile } from "@/hooks/use-mobile";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
+import { trackCTAClick, trackExternalLink, trackNavigation } from "@/lib/analytics-events";
 
 type NavbarProps = {
   scrollTo: (ref: React.RefObject<HTMLDivElement>) => void;
@@ -191,6 +192,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink
               active={activeSection === "home"}
               onClick={() => {
+                trackNavigation("home");
                 scrollTo(refs.heroRef);
                 if (isMobile) setMenuOpen(false);
               }}
@@ -203,6 +205,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink
               active={activeSection === "about"}
               onClick={() => {
+                trackNavigation("about");
                 scrollTo(refs.aboutRef);
                 if (isMobile) setMenuOpen(false);
               }}
@@ -215,6 +218,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink
               active={activeSection === "services"}
               onClick={() => {
+                trackNavigation("services");
                 scrollTo(refs.servicesRef);
                 if (isMobile) setMenuOpen(false);
               }}
@@ -227,6 +231,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink
               active={activeSection === "process"}
               onClick={() => {
+                trackNavigation("process");
                 scrollTo(refs.processRef);
                 if (isMobile) setMenuOpen(false);
               }}
@@ -239,6 +244,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink
               active={activeSection === "pricing"}
               onClick={() => {
+                trackNavigation("pricing");
                 scrollTo(refs.pricingRef);
                 if (isMobile) setMenuOpen(false);
               }}
@@ -251,6 +257,7 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
             <NavLink
               active={activeSection === "whyus"}
               onClick={() => {
+                trackNavigation("whyus");
                 scrollTo(refs.whyUsRef);
                 if (isMobile) setMenuOpen(false);
               }}
@@ -264,6 +271,8 @@ export function Navbar({ scrollTo, activeSection, enterButton, enterLink, leaveL
 
             <motion.button
               onClick={() => {
+                trackCTAClick("navbar_desktop");
+                trackExternalLink("form.norpus.com", "navbar_desktop");
                 window.open("https://form.norpus.com/", "_blank");
               }}
               onMouseEnter={enterButton}

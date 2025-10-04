@@ -14,8 +14,11 @@ import { Services } from "@/components/Services";
 import { WhyUs } from "@/components/Whyus";
 import { SectionSeparator } from "@/components/ui/section-separator";
 import { useMobile } from "@/hooks/use-mobile";
+import { useGoogleAnalytics } from "@/hooks/use-google-analytics";
 
 export default function Home() {
+  // Google Analytics tracking
+  useGoogleAnalytics();
   const isMobile = useMobile();
   const [, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");

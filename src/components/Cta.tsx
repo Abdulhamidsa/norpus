@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import { trackCTAClick, trackExternalLink } from "@/lib/analytics-events";
 
 type ProcessProps = {
   leaveLink?: () => void;
@@ -94,6 +95,10 @@ export const Cta = forwardRef<HTMLDivElement, ProcessProps>(({ leaveLink, enterB
                   className="relative inline-flex items-center gap-3 px-6 py-3 bg-background/80 backdrop-blur-sm border border-border/20 rounded-lg font-medium text-foreground hover:text-primary transition-all duration-300 group"
                   onMouseEnter={enterButton}
                   onMouseLeave={leaveLink}
+                  onClick={() => {
+                    trackCTAClick("main_cta_section");
+                    trackExternalLink("form.norpus.com", "cta_section");
+                  }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
